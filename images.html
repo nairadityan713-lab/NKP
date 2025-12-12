@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Core Memories</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --canvas-top: #ffe3e6;
+            --canvas-mid: #ffc9d2;
+            --canvas-bottom: #f3a8b2;
+            --text-main: #241018;
+            --text-muted: #4a2230;
+            --panel-strong: rgba(255, 250, 244, 0.97);
+            --panel: rgba(255, 241, 235, 0.93);
+            --panel-soft: rgba(253, 229, 216, 0.9);
+            --nav-glass: rgba(255, 247, 241, 0.97);
+            --outline: rgba(214, 158, 102, 0.4);
+            --shadow-lg: 0 24px 60px rgba(143, 76, 72, 0.22);
+            --shadow-md: 0 18px 35px rgba(143, 76, 72, 0.16);
+            --accent: #d24762;
+            --accent-soft: #f6b66a;
+        }
+
+        body {
+            font-family: 'Inter', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: radial-gradient(circle at top, var(--canvas-top) 0%, var(--canvas-mid) 55%, var(--canvas-bottom) 100%);
+            color: var(--text-main);
+            padding-bottom: 60px;
+            letter-spacing: 0.02em;
+        }
+
+        header {
+            background: var(--nav-glass);
+            border-bottom: 1px solid var(--outline);
+            color: var(--text-main);
+            padding: 35px;
+            text-align: center;
+            box-shadow: var(--shadow-lg);
+            backdrop-filter: blur(18px);
+        }
+
+        .header-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.8em;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            background: linear-gradient(120deg, var(--accent), var(--accent-soft));
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            margin: 10px 0 0;
+        }
+
+        nav {
+            background: var(--nav-glass);
+            backdrop-filter: blur(18px);
+            padding: 10px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--outline);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: var(--shadow-md);
+        }
+
+        nav a {
+            display: inline-block;
+            color: var(--text-main);
+            text-align: center;
+            padding: 12px 24px;
+            text-decoration: none;
+            font-size: 0.9em;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            transition: all 0.3s ease;
+            margin: 0 18px;
+            border-radius: 999px;
+            border: 1px solid transparent;
+            background: transparent;
+        }
+
+        nav a[aria-current="page"], nav a:hover {
+            background: linear-gradient(120deg, var(--accent), var(--accent-soft));
+            color: #fff;
+            border-color: transparent;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(33, 46, 73, 0.25);
+        }
+
+        .content {
+            padding: 40px;
+            text-align: center;
+            max-width: 1200px;
+            margin: 20px auto;
+            display: grid;
+            gap: 30px;
+            background: var(--panel);
+            border-radius: 30px;
+            border: 1px solid var(--outline);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .content h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.2em;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--text-main);
+            margin: 0;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 22px;
+        }
+
+        .image-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 18px;
+            box-shadow: var(--shadow-md);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid var(--outline);
+            background: var(--panel-strong);
+        }
+
+        .image-card img {
+            width: 100%;
+            height: 260px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+
+        .image-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 18px 35px rgba(33, 46, 73, 0.18);
+        }
+
+        .image-card:hover img { transform: scale(1.05); }
+
+        .modal {
+            position: fixed;
+            inset: 0;
+            background-color: rgba(0, 0, 0, 0.9);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal.open { display: flex; }
+
+        .modal img {
+            max-width: 90%;
+            max-height: 90vh;
+            border-radius: 18px;
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.15);
+            border: 1px solid var(--outline);
+            background: var(--panel-strong);
+        }
+
+        .close-button {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: #fff;
+            font-size: 2em;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .close-button:hover { transform: rotate(90deg); }
+
+        .slideshow-controls {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            z-index: 1000;
+            background: var(--panel-soft);
+            padding: 12px 16px;
+            border-radius: 16px;
+            backdrop-filter: blur(18px);
+            border: 1px solid var(--outline);
+            box-shadow: var(--shadow-md);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .slideshow-button {
+            background: linear-gradient(120deg, var(--accent), var(--accent-soft));
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 999px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+        }
+
+        .slideshow-modal {
+            position: fixed;
+            inset: 0;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            background: rgba(0,0,0,0.92);
+            overflow: hidden;
+        }
+
+        .slideshow-modal.active { display: flex; }
+
+        /* Slideshow image with smooth fade transition and zoom effect */
+        .slideshow-image {
+            max-width: 90%;
+            max-height: 90vh;
+            border-radius: 18px;
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.15);
+            border: 1px solid var(--outline);
+            background: var(--panel-strong);
+            object-fit: cover;
+            display: block;               /* always present; visibility handled by opacity */
+            opacity: 0;                   /* start hidden */
+            transition: opacity 1s ease;  /* smooth fade (1s) */
+            pointer-events: none;         /* prevent clicks while transitioning */
+            transform: scale(1);
+        }
+        .slideshow-modal.active .slideshow-image { 
+            opacity: 1; 
+            pointer-events: auto;
+            animation: slowZoomIn 4s ease-in-out forwards;
+        }
+
+        /* Slow zoom in animation over 4 seconds */
+        @keyframes slowZoomIn {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.08); }
+        }
+
+        .final-slide {
+            /* moved: make collage a centered panel (hidden by default) */
+            display: none;
+            width: 100%;
+            max-width: 980px;
+            margin: 28px auto;
+            padding: 20px;
+            border-radius: 18px;
+            background: linear-gradient(180deg, rgba(246,182,106,0.18), rgba(246,182,106,0.12));
+            box-shadow: var(--shadow-lg);
+             border: 1px solid var(--outline);
+            justify-content: center;
+            align-items: center;
+        }
+
+         .collage-container {
+             width: 100%;
+             max-width: 860px;
+             height: auto;
+             display: grid;
+             grid-template-columns: repeat(3, 1fr);
+             gap: 10px;
+             padding: 12px;
+         }
+
+         .collage-item {
+             position: relative;
+             overflow: hidden;
+             border-radius: 15px;
+             box-shadow: var(--shadow-md);
+             transition: transform 0.3s ease;
+             border: 1px solid var(--outline);
+             background: var(--panel-strong);
+         }
+
+         .collage-item:hover { transform: scale(1.05); }
+
+         .collage-item img { width: 100%; height: 100%; object-fit: cover; }
+
+         .nkp-text {
+             font-family: 'Cormorant Garamond', serif;
+             font-size: 2.4em;
+             letter-spacing: 0.18em;
+             text-transform: uppercase;
+            color: var(--accent-soft);
+             margin-top: 12px;
+             text-align: center;
+             width: 100%;
+            font-weight: 700;
+            text-shadow: 0 0 20px rgba(246,182,106,0.5), 0 0 40px rgba(210,74,94,0.25);
+            animation: goldGlow 2.5s ease-in-out infinite;
+         }
+
+        @keyframes goldGlow {
+            0%, 100% {
+                text-shadow: 0 0 20px rgba(246,182,106,0.5), 0 0 40px rgba(210,74,94,0.25);
+                opacity: 1;
+            }
+            50% {
+                text-shadow: 0 0 30px rgba(246,182,106,0.8), 0 0 60px rgba(210,74,94,0.4), 0 0 80px rgba(246,182,106,0.3);
+                opacity: 1;
+            }
+        }
+
+        .video-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .video-heading {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.2em;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--accent);
+             margin: 0 0 20px 0;
+             text-align: center;
+             padding: 14px 28px;
+             background: white;
+             border-radius: 12px;
+             box-shadow: var(--shadow-md);
+             border: 1px solid var(--outline);
+        }
+
+        .video-player {
+            width: 100%;
+            max-width: 900px;
+            border-radius: 18px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--outline);
+            background: var(--panel-strong);
+        }
+
+        @media screen and (max-width: 768px) {
+            h1 { font-size: 2.6em; }
+            .image-card img { height: 200px; }
+            .collage-container { width: 90%; height: 50vh; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div>
+                <p style="margin: 0; font-size: 0.95em; color: var(--text-muted); letter-spacing: 0.15em; text-transform: uppercase;">Our Memories</p>
+                <h1>Core Memories</h1>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="aboutus.html">About Us</a> 
+        <a href="rules and regulation.html">Rules</a>
+        <a href="bts.html">Behind the scene</a>
+    </nav>
+
+     <audio id="backgroundMusic" loop style="position: fixed; bottom: 20px; right: 20px; z-index: 1000;">
+         <source src="C:\Users\adina\Downloads\WhatsApp Audio 2025-12-06 at 11.39.21 PM.mpeg" type="audio/mpeg">
+         Your browser does not support the audio element.
+     </audio>
+
+    <div class="slideshow-controls">
+        <button onclick="startSlideshow()" class="slideshow-button" id="playButton">Play Slideshow</button>
+        <button onclick="stopSlideshow()" class="slideshow-button" id="stopButton" style="display: none;">Stop Slideshow</button>
+    </div>
+
+    <!-- Slideshow modal (required for slideshow to work) -->
+    <div class="slideshow-modal">
+        <img class="slideshow-image" src="" alt="Slideshow image">
+    </div>
+
+    <div class="content">
+        <h2>Gallery</h2>
+        <div class="gallery-grid">
+            <div class="image-card"><img src="file:///C:/Users/adina/Downloads/WhatsApp Image 2025-08-19 at 2.33.30 PM.jpeg" onclick="openModal(this)" loading="lazy" alt="Memory"></div>
+            <div class="image-card"><img src="file:///C:/Users/adina/Downloads/WhatsApp Image 2025-03-04 at 2.53.03 PM.jpeg" onclick="openModal(this)" loading="lazy" alt="Memory"></div>
+            <div class="image-card"><img src="file:///C:/Users/adina/Downloads/WhatsApp Image 2025-02-26 at 12.49.15 PM.jpeg" onclick="openModal(this)" loading="lazy" alt="Memory"></div>
+            <div class="image-card"><img src="file:///C:/Users/adina/Downloads/WhatsApp Image 2025-12-04 at 11.54.23 AM.jpeg" onclick="openModal(this)" loading="lazy" alt="Memory"></div>
+            <div class="image-card"><img src="file:///C:/Users/adina/Downloads/WhatsApp Image 2025-02-26 at 12.49.14 PM (1).jpeg" onclick="openModal(this)" loading="lazy" alt="Memory"></div>
+            <div class="image-card"><img src="C:\Users\adina\Downloads\WhatsApp Image 2025-12-07 at 4.10.29 AM.jpeg" onclick="openModal(this)" loading="lazy" alt="Memory"></div>
+            <div class="image-card"><img src="file:///C:/Users/adina/Downloads/WhatsApp Image 2025-03-02 at 2.45.01 PM.jpeg" onclick="openModal(this)" loading="lazy" alt="Memory"></div>
+            <div class="image-card"><img src="file:///C:/Users/adina/Downloads/WhatsApp Image 2025-03-02 at 2.41.13 PM.jpeg" onclick="openModal(this)" loading="lazy" alt="Memory"></div>
+            <div class="image-card"><img src="file:///C:/Users/adina/Downloads/WhatsApp Image 2025-02-26 at 12.56.54 PM.jpeg" onclick="openModal(this)" loading="lazy" alt="Memory"></div>
+            <div class="image-card"><img src="file:///C:/Users/adina/Downloads/WhatsApp Image 2025-03-02 at 2.51.47 PM.jpeg" onclick="openModal(this)" loading="lazy" alt="Memory"></div>
+            <div class="image-card"><img src="file:///C:/Users/adina/Downloads/WhatsApp Image 2025-03-02 at 2.51.47 PM (1).jpeg" onclick="openModal(this)" loading="lazy" alt="Memory"></div>
+            <div class="image-card"><img src="file:///C:/Users/adina/Downloads/WhatsApp Image 2025-03-04 at 2.51.59 PM.jpeg" onclick="openModal(this)" loading="lazy" alt="Memory"></div>
+            <div class="image-card"><img src="file:///C:/Users/adina/Downloads/WhatsApp Image 2025-03-04 at 2.50.52 PM (1).jpeg" onclick="openModal(this)" loading="lazy" alt="Memory"></div>
+            <div class="image-card"><img src="file:///C:/Users/adina/Downloads/WhatsApp Image 2025-02-26 at 12.50.38 PM.jpeg" onclick="openModal(this)" loading="lazy" alt="Memory"></div>
+            <div class="image-card"><img src="C:\Users\adina\Downloads\WhatsApp Image 2025-12-07 at 4.36.07 AM.jpeg" onclick="openModal(this)" loading="lazy" alt="Memory"></div>
+            <div class="image-card"><img src="C:\Users\adina\Downloads\WhatsApp Image 2025-12-07 at 1.06.26 PM.jpeg" onclick="openModal(this)" loading="lazy" alt="Memory"></div>
+            <div class="image-card"><img src="file:///C:/Users/adina/Downloads/WhatsApp Image 2025-03-04 at 3.04.44 PM.jpeg" onclick="openModal(this)" loading="lazy" alt="Memory"></div>
+            <div class="image-card"><img src="file:///C:/Users/adina/Downloads/WhatsApp Image 2025-03-04 at 2.53.52 PM.jpeg" onclick="openModal(this)" loading="lazy" alt="Memory"></div>
+            <div class="image-card"><img src="file:///C:/Users/adina/Downloads/WhatsApp Image 2025-03-17 at 4.47.27 PM.jpeg" onclick="openModal(this)" loading="lazy" alt="Memory"></div>
+            <div class="image-card"><img src="C:\Users\adina\Downloads\WhatsApp Image 2025-12-07 at 12.58.50 PM.jpeg" onclick="openModal(this)" loading="lazy" alt="Memory"></div>
+            <div class="image-card"><img src="file:///C:/Users/adina/Downloads/WhatsApp Image 2025-03-19 at 2.09.36 PM.jpeg" onclick="openModal(this)" loading="lazy" alt="Memory"></div>
+            <div class="image-card"><img src="file:///C:/Users/adina/Downloads/WhatsApp Image 2025-03-19 at 2.20.09 PM.jpeg" onclick="openModal(this)" loading="lazy" alt="Memory"></div>
+            <div class="image-card"><img src="file:///C:/Users/adina/Downloads/WhatsApp Image 2025-03-19 at 2.58.11 PM.jpeg" onclick="openModal(this)" loading="lazy" alt="Memory"></div>
+            <div class="image-card"><img src="C:\Users\adina\Downloads\WhatsApp Image 2025-12-07 at 3.39.32 AM.jpeg" onclick="openModal(this)" loading="lazy" alt="Memory"></div>
+            <div class="image-card"><img src="C:\Users\adina\Downloads\WhatsApp Image 2025-12-07 at 4.27.17 AM.jpeg" onclick="openModal(this)" loading="lazy" alt="Memory"></div>
+            <div class="image-card"><img src="file:///C:/Users/adina/Downloads/WhatsApp Image 2025-03-28 at 6.44.54 PM.jpeg" onclick="openModal(this)" loading="lazy" alt="Memory"></div>
+            <div class="image-card"><img src="file:///C:/Users/adina/Downloads/WhatsApp Image 2025-03-28 at 6.45.30 PM.jpeg" onclick="openModal(this)" loading="lazy" alt="Memory"></div>
+            <div class="image-card"><img src="C:\Users\adina\Downloads\WhatsApp Image 2025-12-07 at 1.14.18 PM.jpeg" onclick="openModal(this)" loading="lazy" alt="Memory"></div>
+            <div class="image-card"><img src="file:///C:/Users/adina/Downloads/WhatsApp Image 2025-04-01 at 3.30.04 PM.jpeg" onclick="openModal(this)" loading="lazy" alt="Memory"></div>
+            <div class="image-card"><img src="C:\Users\adina\Downloads\WhatsApp Image 2025-12-09 at 2.52.59 PM.jpeg" onclick="openModal(this)" loading="lazy" alt="Memory"></div>
+            <div class="image-card"><img src="file:///C:/Users/adina/Downloads/WhatsApp Image 2025-04-01 at 3.45.02 PM (1).jpeg" onclick="openModal(this)" loading="lazy" alt="Memory"></div>
+            <div class="image-card"><img src="C:\Users\adina\Downloads\WhatsApp Image 2025-12-07 at 1.31.18 PM.jpeg" onclick="openModal(this)" loading="lazy" alt="Memory"></div>
+            <div class="image-card"><img src="C:\Users\adina\Downloads\WhatsApp Image 2025-12-09 at 2.52.59 PM (1).jpeg" onclick="openModal(this)" loading="lazy" alt="Memory"></div>
+            <div class="image-card"><img src="C:\Users\adina\Downloads\WhatsApp Image 2025-12-09 at 2.59.35 PM.jpeg" onclick="openModal(this)" loading="lazy" alt="Memory"></div>
+            <div class="image-card"><img src="C:\Users\adina\Downloads\WhatsApp Image 2025-12-09 at 2.52.59 PM (2).jpeg" onclick="openModal(this)" loading="lazy" alt="Memory"></div>
+ <div class="image-card"><img src="C:\Users\adina\Downloads\WhatsApp Image 2025-12-09 at 3.04.30 PM.jpeg" onclick= "openModal(this)" loading="lazy" alt="Memory"></div>
+<div class="image-card"><img src= "C:\Users\adina\Downloads\WhatsApp Image 2025-12-09 at 2.52.59 PM (3).jpeg"onclick="openModal(this)" loading="lazy" alt="Group of friends laughing together at an indoor gathering, warm ambient lighting creating a joyful and celebratory atmosphere"></div>
+<div class="image-card"><img src="C:\Users\adina\Downloads\WhatsApp Image 2025-12-07 at 1.08.12 PM.jpeg" onclick="openModal(this)" loading="lazy" alt="Friends posing for a photo outdoors during daytime, smiling warmly in a bright natural setting"></div>
+<div class="image-card"><img src="file:///C:/Users/adina/Downloads/WhatsApp Image 2025-04-01 at 3.45.02 PM.jpeg" onclick="openModal(this)" loading="lazy" alt="Group members enjoying a moment together indoors with soft lighting, creating a fond and nostalgic memory"></div>
+<div class="image-card"><img src="C:\Users\adina\Downloads\WhatsApp Image 2025-12-07 at 4.24.44 AM.jpeg" onclick="openModal(this)" loading="lazy" alt="Friends gathered closely together, expressing happiness and camaraderie in a warmly lit indoor space"></div>
+</div> <!-- end .content -->
+
+   
+    <div class="final-slide" id="finalSlide" aria-hidden="true">
+        <div class="collage-container" role="list">
+            <div class="collage-item"><img src="C:\Users\adina\Downloads\WhatsApp Image 2025-12-07 at 10.58.55 PM (3).jpeg" alt="Memory"></div>
+            <div class="collage-item"><img src="C:\Users\adina\Downloads\WhatsApp Image 2025-12-07 at 10.58.55 PM (1).jpeg" alt="Memory"></div>
+            <div class="collage-item"><img src="C:\Users\adina\Downloads\WhatsApp Image 2025-12-07 at 10.58.55 PM (2).jpeg"alt="Memory"></div>
+            <div class="collage-item"><img src="C:\Users\adina\Downloads\WhatsApp Image 2025-12-07 at 10.58.56 PM.jpeg" alt="Memory"></div>
+            <div class="collage-item"><img src="C:\Users\adina\Downloads\WhatsApp Image 2025-12-07 at 10.58.56 PM (1).jpeg" alt="Memory"></div>
+            <div class="collage-item"><img src="C:\Users\adina\Downloads\WhatsApp Image 2025-12-12 at 12.20.29 AM.jpeg" alt="Memory"></div>
+            <div class="collage-item"><img src="C:\Users\adina\Downloads\WhatsApp Image 2025-12-07 at 4.36.07 AM.jpeg" alt="Memory"></div>
+            <div class="collage-item"><img src="C:\Users\adina\Downloads\WhatsApp Image 2025-12-12 at 12.20.23 AM.jpeg" alt="Memory"></div>
+            <div class="collage-item"><img src="C:\Users\adina\Downloads\WhatsApp Image 2025-12-07 at 10.58.55 PM.jpeg" alt="Memory"></div>
+        </div>
+        <div class="nkp-text">NAANO KI PALTAN</div>
+    </div>
+
+    <div class="video-section">
+        <div style="width: 100%; display: flex; flex-direction: column; align-items: center;">
+            <h2 class="video-heading">Best Birthday Gift</h2>
+            <div class="video-player">
+             <video width="100%" height="auto" controls style="border-radius: 18px;" poster="C:\Users\adina\Downloads\WhatsApp Image 2025-12-06 at 8.15.30 PM.jpeg">
+                <source src="C:\Users\adina\Downloads\WhatsApp Video 2025-12-01 at 1.40.16 PM.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+
+    <script>
+        const audio = document.getElementById('backgroundMusic');
+        audio.volume = 0.5;
+
+        let slideshowInterval = null;
+        let currentImageIndex = 0;
+        let isPlayingSlideshow = false;
+        const SLIDE_DURATION = 4000; // 4 seconds per image
+
+        function getImages() {
+            return Array.from(document.querySelectorAll('.image-card img'));
+        }
+
+        function startSlideshow() {
+            const images = getImages();
+            if (images.length === 0) {
+                console.warn('No images found in gallery');
+                return;
+            }
+            if (isPlayingSlideshow) return;
+            isPlayingSlideshow = true;
+
+            const playButton = document.getElementById('playButton');
+            const stopButton = document.getElementById('stopButton');
+            if (playButton) playButton.style.display = 'none';
+            if (stopButton) stopButton.style.display = 'block';
+
+            // Start audio
+            audio.play().catch((err) => console.warn('Audio play failed:', err));
+
+            currentImageIndex = 0;
+            // show first immediately
+            showNextImage();
+            slideshowInterval = setInterval(showNextImage, SLIDE_DURATION);
+        }
+
+        async function showNextImage() {
+            const images = getImages();
+            const slideshowModal = document.querySelector('.slideshow-modal');
+            const slideshowImage = document.querySelector('.slideshow-image');
+
+            if (!slideshowModal || !slideshowImage) {
+                console.error('Slideshow modal or image not found');
+                stopSlideshow();
+                return;
+            }
+
+            if (currentImageIndex < images.length) {
+                slideshowImage.style.opacity = 0;
+                await new Promise(r => setTimeout(r, 200));
+                slideshowImage.src = images[currentImageIndex].src;
+                slideshowImage.alt = images[currentImageIndex].alt || `Slide ${currentImageIndex + 1}`;
+                slideshowModal.classList.add('active');
+                requestAnimationFrame(() => { requestAnimationFrame(() => { slideshowImage.style.opacity = 1; }); });
+                currentImageIndex++;
+            } else {
+                showFinalSlide();
+            }
+        }
+
+        function showFinalSlide() {
+            if (slideshowInterval) { clearInterval(slideshowInterval); slideshowInterval = null; }
+            isPlayingSlideshow = false;
+            const slideshowModal = document.querySelector('.slideshow-modal');
+            const finalSlide = document.getElementById('finalSlide');
+            if (slideshowModal) slideshowModal.classList.remove('active');
+            if (finalSlide) finalSlide.style.display = 'flex';
+            // stop background music when slideshow ends
+            audio.pause();
+            audio.currentTime = 0;
+        }
+
+        function stopSlideshow() {
+            if (slideshowInterval) { clearInterval(slideshowInterval); slideshowInterval = null; }
+            isPlayingSlideshow = false;
+            const slideshowModal = document.querySelector('.slideshow-modal');
+            const slideshowImage = document.querySelector('.slideshow-image');
+            const playButton = document.getElementById('playButton');
+            const stopButton = document.getElementById('stopButton');
+            const finalSlide = document.getElementById('finalSlide');
+            if (slideshowModal) slideshowModal.classList.remove('active');
+            if (slideshowImage) { slideshowImage.style.opacity = 0; slideshowImage.src = ''; }
+            if (finalSlide) finalSlide.style.display = 'none';
+            audio.pause(); audio.currentTime = 0;
+            if (playButton) playButton.style.display = 'block';
+            if (stopButton) stopButton.style.display = 'none';
+            currentImageIndex = 0;
+        }
+
+        // close with Escape
+        window.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape' && isPlayingSlideshow) {
+                stopSlideshow();
+            }
+        });
+
+        // modal viewer for individual images
+        function openModal(img) {
+            const modal = document.createElement('div');
+            modal.className = 'modal open';
+            const modalImg = document.createElement('img');
+            modalImg.src = img.src;
+            const closeBtn = document.createElement('span');
+            closeBtn.className = 'close-button';
+            closeBtn.innerHTML = '&times;';
+            closeBtn.onclick = () => modal.remove();
+            modal.appendChild(closeBtn);
+            modal.appendChild(modalImg);
+            modal.onclick = (e) => e.target === modal && modal.remove();
+            document.body.appendChild(modal);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,1795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>About Us - NAANO KI PALTAN</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #1a2a6c, #2a4858, #2c5364);
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(to right, #141e30, #243b55);
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo-container {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid #4facfe;
+            box-shadow: 0 0 15px rgba(79, 172, 254, 0.3);
+        }
+
+        .logo-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .logo-container img:hover {
+            transform: scale(1.1);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 52px;
+            letter-spacing: 2px;
+            font-family: 'Dancing Script', cursive;
+            animation: fadeIn 1.5s ease-in-out;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(to right, #4facfe, #00f2fe);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .container {
+            width: 80%;
+            margin: 40px auto;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            animation: slideUp 1s ease-out;
+        }
+        .section-title {
+            font-size: 32px;
+            color: #ffffff;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 15px;
+            background: linear-gradient(to right, hsl(207, 60%, 3%), #131609);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(to right, #4facfe, #00f2fe);
+            border-radius: 2px;
+        }
+
+        .about-content {
+            font-size: 18px;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 25px;
+            transition: transform 0.3s ease;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            border-left: 4px solid #4facfe;
+        }
+
+        .about-content:hover {
+            transform: translateX(10px);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        strong {
+            color: #4facfe;
+            font-weight: 600;
+        }
+
+        footer {
+            background: linear-gradient(to right, #141e30, #243b55);
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+            box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Add responsive design */
+        @media (max-width: 768px) {
+            .container {
+                width: 90%;
+                padding: 20px;
+            }
+            
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .logo-container {
+                width: 80px;
+                height: 80px;
+            }
+            
+            header h1 {
+                font-size: 32px;
+            }
+            
+            .section-title {
+                font-size: 28px;
+            }
+            
+            .about-content {
+                font-size: 16px;
+            }
+        }
+
+        /* Profile Section Styles */
+        .profile-section {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            margin-bottom: 30px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 20px;
+            border-left: 4px solid #4facfe;
+        }
+
+        .logo-container {
+            width: 150px;
+            height: 150px;
+            position: relative;
+            background: linear-gradient(45deg, #141e30, #243b55);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            animation: pulse 2s infinite;
+            overflow: hidden;
+        }
+
+        .profile-content {
+            flex: 1;
+        }
+
+        .name-title {
+            font-size: 24px;
+            color: #4facfe;
+            margin-bottom: 10px;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Krish's Car Logo */
+        .car-logo {
+            position: relative;
+            width: 100px;
+            height: 60px;
+        }
+
+        .car-body {
+            position: absolute;
+            width: 80px;
+            height: 30px;
+            background: #4facfe;
+            border-radius: 20px;
+            top: 20px;
+            left: 10px;
+        }
+
+        .car-roof {
+            position: absolute;
+            width: 45px;
+            height: 25px;
+            background: #4facfe;
+            border-radius: 20px 20px 0 0;
+            top: 5px;
+            left: 30px;
+        }
+
+        .wheel {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #fff;
+            border-radius: 50%;
+            bottom: 5px;
+            animation: rotate 2s linear infinite;
+        }
+
+        .wheel-left { left: 15px; }
+        .wheel-right { right: 15px; }
+
+        /* Keziah's New Healing Logo */
+        .healing-logo {
+            position: relative;
+            width: 100px;
+            height: 100px;
+        }
+
+        .lotus {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .petal {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: #ff7eb3;
+            border-radius: 50% 50% 0 50%;
+            transform-origin: bottom right;
+            animation: floatPetal 3s ease-in-out infinite;
+        }
+
+        .petal:nth-child(1) { transform: rotate(0deg) translate(20px); animation-delay: 0s; }
+        .petal:nth-child(2) { transform: rotate(60deg) translate(20px); animation-delay: 0.5s; }
+        .petal:nth-child(3) { transform: rotate(120deg) translate(20px); animation-delay: 1s; }
+        .petal:nth-child(4) { transform: rotate(180deg) translate(20px); animation-delay: 1.5s; }
+        .petal:nth-child(5) { transform: rotate(240deg) translate(20px); animation-delay: 2s; }
+        .petal:nth-child(6) { transform: rotate(300deg) translate(20px); animation-delay: 2.5s; }
+
+        .lotus-center {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: #ffa7c4;
+            border-radius: 50%;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .healing-ripples {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .ripple {
+            position: absolute;
+            border: 2px solid rgba(255, 126, 179, 0.5);
+            border-radius: 50%;
+            animation: rippleEffect 3s ease-out infinite;
+            width: 100%;
+            height: 100%;
+        }
+
+        .ripple:nth-child(2) { animation-delay: 1s; }
+        .ripple:nth-child(3) { animation-delay: 2s; }
+
+        .healing-symbols {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .symbol {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background: rgba(255, 126, 179, 0.8);
+            border-radius: 50%;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .symbol:nth-child(1) { top: 10%; left: 50%; animation-delay: 0s; }
+        .symbol:nth-child(2) { top: 50%; left: 10%; animation-delay: 1s; }
+        .symbol:nth-child(3) { top: 50%; right: 10%; animation-delay: 2s; }
+
+        @keyframes floatPetal {
+            0%, 100% { transform: rotate(var(--rotation)) translate(20px); }
+            50% { transform: rotate(var(--rotation)) translate(22px); }
+        }
+
+        @keyframes rippleEffect {
+            0% { transform: scale(0.3); opacity: 1; }
+            100% { transform: scale(1); opacity: 0; }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        /* Kavya's Sparkle Logo */
+        .sparkle-container {
+            position: relative;
+            width: 100px;
+            height: 100px;
+        }
+
+        .sparkle {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background: #FFD700;
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+            animation: sparkleRotate 3s linear infinite;
+        }
+
+        .sparkle-inner {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: #FFA500;
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: sparkleRotate 2s linear infinite reverse;
+        }
+
+        .sparkle-rays {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            animation: rayRotate 10s linear infinite;
+        }
+
+        .ray {
+            position: absolute;
+            width: 4px;
+            height: 20px;
+            background: #FFD700;
+            border-radius: 2px;
+            opacity: 0.7;
+        }
+
+        .ray:nth-child(1) { transform: rotate(0deg) translateY(-40px); }
+        .ray:nth-child(2) { transform: rotate(45deg) translateY(-40px); }
+        .ray:nth-child(3) { transform: rotate(90deg) translateY(-40px); }
+        .ray:nth-child(4) { transform: rotate(135deg) translateY(-40px); }
+        .ray:nth-child(5) { transform: rotate(180deg) translateY(-40px); }
+        .ray:nth-child(6) { transform: rotate(225deg) translateY(-40px); }
+        .ray:nth-child(7) { transform: rotate(270deg) translateY(-40px); }
+        .ray:nth-child(8) { transform: rotate(315deg) translateY(-40px); }
+
+        @keyframes sparkleRotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes rayRotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes heartbeat {
+            0% { transform: rotate(-45deg) scale(1); }
+            25% { transform: rotate(-45deg) scale(1.1); }
+            50% { transform: rotate(-45deg) scale(1); }
+            75% { transform: rotate(-45deg) scale(1.1); }
+            100% { transform: rotate(-45deg) scale(1); }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .profile-section {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .logo-container {
+                margin: 0 auto;
+            }
+        }
+
+        /* Joel's Smart Logo */
+        .brain-logo {
+            position: relative;
+            width: 80px;
+            height: 80px;
+        }
+
+        .lightbulb {
+            position: absolute;
+            width: 40px;
+            height: 60px;
+            background: #FFD700;
+            border-radius: 20px 20px 5px 5px;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: glow 2s ease-in-out infinite;
+        }
+
+        .lightbulb::before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 10px;
+            background: #FFD700;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 0 0 5px 5px;
+        }
+
+        .brain-waves {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            animation: rotate 10s linear infinite;
+        }
+
+        .wave {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 2px solid #4facfe;
+            border-radius: 50%;
+            animation: expand 2s ease-out infinite;
+        }
+
+        .wave:nth-child(2) {
+            animation-delay: 0.5s;
+        }
+
+        .wave:nth-child(3) {
+            animation-delay: 1s;
+        }
+
+        .idea-sparks {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .spark {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #FFD700;
+            border-radius: 50%;
+            animation: sparkle 1.5s ease-in-out infinite;
+        }
+
+        .spark:nth-child(1) { top: 20%; left: 20%; animation-delay: 0s; }
+        .spark:nth-child(2) { top: 20%; right: 20%; animation-delay: 0.3s; }
+        .spark:nth-child(3) { bottom: 20%; left: 20%; animation-delay: 0.6s; }
+        .spark:nth-child(4) { bottom: 20%; right: 20%; animation-delay: 0.9s; }
+
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 0 10px #FFD700, 0 0 20px #FFD700, 0 0 30px #FFD700; opacity: 1; }
+            50% { box-shadow: 0 0 15px #FFD700, 0 0 25px #FFD700, 0 0 35px #FFD700; opacity: 0.8; }
+        }
+
+        @keyframes expand {
+            0% { transform: scale(0.5); opacity: 1; }
+            100% { transform: scale(1.5); opacity: 0; }
+        }
+
+        @keyframes sparkle {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.5); opacity: 0.5; }
+        }
+
+        /* Atharva's Fitness & Fun Logo */
+        .naano-logo {
+            position: relative;
+            width: 100px;
+            height: 100px;
+        }
+
+        .dumbbell {
+            position: absolute;
+            width: 80px;
+            height: 20px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: lift 2s ease-in-out infinite;
+        }
+
+        .dumbbell-bar {
+            position: absolute;
+            width: 40px;
+            height: 6px;
+            background: #4facfe;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .weight {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #4facfe;
+            border-radius: 50%;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .weight-left { left: 0; }
+        .weight-right { right: 0; }
+
+        .sparkle-emoji {
+            position: absolute;
+            font-size: 24px;
+            animation: bounce 1s ease-in-out infinite;
+        }
+
+        .emoji-1 { top: 10px; left: 10px; animation-delay: 0s; }
+        .emoji-2 { top: 10px; right: 10px; animation-delay: 0.3s; }
+        .emoji-3 { bottom: 10px; left: 10px; animation-delay: 0.6s; }
+        .emoji-4 { bottom: 10px; right: 10px; animation-delay: 0.9s; }
+
+        .energy-circle {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 2px dashed #4facfe;
+            border-radius: 50%;
+            animation: spin 10s linear infinite;
+        }
+
+        .mischief-stars {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .star {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #FFD700;
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+            animation: twinkle 1.5s ease-in-out infinite;
+        }
+
+        .star:nth-child(1) { top: 20%; left: 20%; animation-delay: 0s; }
+        .star:nth-child(2) { top: 20%; right: 20%; animation-delay: 0.5s; }
+        .star:nth-child(3) { bottom: 20%; left: 20%; animation-delay: 1s; }
+        .star:nth-child(4) { bottom: 20%; right: 20%; animation-delay: 1.5s; }
+
+        @keyframes lift {
+            0%, 100% { transform: translate(-50%, -50%) rotate(0deg); }
+            50% { transform: translate(-50%, -50%) rotate(10deg); }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.5); }
+        }
+
+        /* Sana's Sweet Logo */
+        .sweet-logo {
+            position: relative;
+            width: 100px;
+            height: 100px;
+        }
+
+        .flower-container {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            animation: gentleFloat 3s ease-in-out infinite;
+        }
+
+        .flower-center {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: #FF69B4;
+            border-radius: 50%;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+        }
+
+        .flower-petal {
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            background: #FFB6C1;
+            border-radius: 50%;
+            animation: petalPulse 2s ease-in-out infinite;
+        }
+
+        .petal-1 { top: 0; left: 50%; transform: translateX(-50%); animation-delay: 0s; }
+        .petal-2 { top: 50%; right: 0; transform: translateY(-50%); animation-delay: 0.4s; }
+        .petal-3 { bottom: 0; left: 50%; transform: translateX(-50%); animation-delay: 0.8s; }
+        .petal-4 { top: 50%; left: 0; transform: translateY(-50%); animation-delay: 1.2s; }
+
+        .butterfly {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            animation: butterflyFlight 4s ease-in-out infinite;
+        }
+
+        .butterfly-wing {
+            position: absolute;
+            width: 15px;
+            height: 20px;
+            background: #FFC0CB;
+            border-radius: 50% 50% 50% 50%;
+            animation: wingFlap 0.5s ease-in-out infinite alternate;
+        }
+
+        .wing-left {
+            left: -10px;
+            transform-origin: right center;
+        }
+
+        .wing-right {
+            right: -10px;
+            transform-origin: left center;
+        }
+
+        .butterfly-1 { top: 10%; left: 20%; animation-delay: 0s; }
+        .butterfly-2 { top: 70%; right: 20%; animation-delay: 1s; }
+
+        .sparkle-heart {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background: #FF69B4;
+            clip-path: path('M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-12 15.809 6.43-6.38 12-11.148 12-15.809 0-4.011-3.095-6.181-6.274-6.181');
+            animation: heartbeat 1.5s ease-in-out infinite;
+        }
+
+        .heart-1 { top: 20%; right: 15%; }
+        .heart-2 { bottom: 20%; left: 15%; animation-delay: 0.5s; }
+
+        @keyframes gentleFloat {
+            0%, 100% { transform: translate(-50%, -50%) rotate(0deg); }
+            50% { transform: translate(-50%, -55%); }
+        }
+
+        @keyframes petalPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        @keyframes butterflyFlight {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(10px, -10px) rotate(10deg); }
+            50% { transform: translate(0, -20px) rotate(0deg); }
+            75% { transform: translate(-10px, -10px) rotate(-10deg); }
+        }
+
+        @keyframes wingFlap {
+            from { transform: rotateY(0deg); }
+            to { transform: rotateY(60deg); }
+        }
+
+        /* Sonali's Peace Logo */
+        .peace-logo {
+            position: relative;
+            width: 100px;
+            height: 100px;
+        }
+
+        .dove {
+            position: absolute;
+            width: 60px;
+            height: 40px;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            animation: gentleHover 3s ease-in-out infinite;
+        }
+
+        .dove-body {
+            position: absolute;
+            width: 40px;
+            height: 25px;
+            background: #fff;
+            border-radius: 50% 50% 50% 50%;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .dove-wing {
+            position: absolute;
+            width: 25px;
+            height: 20px;
+            background: #fff;
+            border-radius: 50% 50% 50% 0;
+            animation: wingMove 2s ease-in-out infinite;
+        }
+
+        .wing-left {
+            left: 5px;
+            transform-origin: right center;
+        }
+
+        .wing-right {
+            right: 5px;
+            transform-origin: left center;
+        }
+
+        .peace-circles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            animation: rotate 20s linear infinite;
+        }
+
+        .peace-circle {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 2px solid rgba(255, 255, 255, 0.6);
+            border-radius: 50%;
+            animation: expandPeace 3s ease-out infinite;
+        }
+
+        .peace-circle:nth-child(2) { animation-delay: 1s; }
+        .peace-circle:nth-child(3) { animation-delay: 2s; }
+
+        .olive-branch {
+            position: absolute;
+            width: 30px;
+            height: 15px;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .leaf {
+            position: absolute;
+            width: 8px;
+            height: 12px;
+            background: #90EE90;
+            border-radius: 0 50% 50% 0;
+            animation: leafSway 2s ease-in-out infinite;
+        }
+
+        .leaf:nth-child(1) { left: 0; animation-delay: 0s; }
+        .leaf:nth-child(2) { left: 10px; animation-delay: 0.3s; }
+        .leaf:nth-child(3) { left: 20px; animation-delay: 0.6s; }
+
+        @keyframes gentleHover {
+            0%, 100% { transform: translate(-50%, -50%); }
+            50% { transform: translate(-50%, -55%); }
+        }
+
+        @keyframes wingMove {
+            0%, 100% { transform: rotate(0deg); }
+            50% { transform: rotate(15deg); }
+        }
+
+        @keyframes expandPeace {
+            0% { transform: scale(0.8); opacity: 0.8; }
+            100% { transform: scale(1.2); opacity: 0; }
+        }
+
+        @keyframes leafSway {
+            0%, 100% { transform: rotate(0deg); }
+            50% { transform: rotate(-10deg); }
+        }
+
+        /* Truptraj's Tabla Logo */
+        .tabla-logo {
+            position: relative;
+            width: 100px;
+            height: 100px;
+        }
+
+        .tabla {
+            position: absolute;
+            width: 45px;
+            height: 60px;
+            background: #8B4513;
+            border-radius: 25px 25px 20px 20px;
+            animation: tablaPulse 1s ease-in-out infinite;
+        }
+
+        .tabla-left {
+            left: 10px;
+            transform: rotate(-5deg);
+        }
+
+        .tabla-right {
+            right: 10px;
+            transform: rotate(5deg);
+        }
+
+        .tabla-head {
+            position: absolute;
+            width: 100%;
+            height: 15px;
+            background: #F4A460;
+            border-radius: 50%;
+            top: 0;
+        }
+
+        .tabla-rim {
+            position: absolute;
+            width: 90%;
+            height: 5px;
+            background: #DEB887;
+            border-radius: 2px;
+            top: 12px;
+            left: 5%;
+        }
+
+        .music-note {
+            position: absolute;
+            font-size: 20px;
+            color: #FFD700;
+            animation: floatNote 2s ease-in-out infinite;
+        }
+
+        .note-1 { top: 10px; left: 70px; animation-delay: 0s; }
+        .note-2 { top: 30px; left: 85px; animation-delay: 0.5s; }
+        .note-3 { top: 50px; left: 70px; animation-delay: 1s; }
+
+        .rhythm-circle {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 2px dashed #FFD700;
+            border-radius: 50%;
+            animation: rotate 10s linear infinite;
+        }
+
+        .sound-wave {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .wave-line {
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #FFD700, transparent);
+            animation: expandWave 1.5s ease-out infinite;
+        }
+
+        .wave-line:nth-child(1) { top: 30%; animation-delay: 0s; }
+        .wave-line:nth-child(2) { top: 50%; animation-delay: 0.5s; }
+        .wave-line:nth-child(3) { top: 70%; animation-delay: 1s; }
+
+        @keyframes tablaPulse {
+            0%, 100% { transform: scale(1) rotate(var(--rotation, 0deg)); }
+            50% { transform: scale(1.05) rotate(var(--rotation, 0deg)); }
+        }
+
+        @keyframes floatNote {
+            0%, 100% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            50% { transform: translateY(-10px) rotate(10deg); opacity: 0.6; }
+        }
+
+        @keyframes expandWave {
+            0% { transform: scaleX(0.3); opacity: 1; }
+            100% { transform: scaleX(1); opacity: 0; }
+        }
+
+        /* Sponsors Section Styles */
+        .sponsors-section {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 40px 20px;
+            margin: 40px auto;
+            border-radius: 20px;
+            text-align: center;
+            width: 80%;
+            max-width: 1200px;
+        }
+
+        .sponsors-title {
+            font-size: 32px;
+            color: #ffffff;
+            margin-bottom: 30px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .sponsors-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(to right, #4facfe, #00f2fe);
+            border-radius: 2px;
+        }
+
+        .sponsor-item {
+            display: inline-block;
+            margin: 20px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .sponsor-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .sponsor-item img {
+            width: 150px;
+            height: 150px;
+            object-fit: contain;
+            filter: brightness(0) invert(1);
+            transition: filter 0.3s ease;
+        }
+
+        .sponsor-item:hover img {
+            filter: brightness(0) invert(0.8);
+        }
+
+        @media (max-width: 768px) {
+            .sponsors-section {
+                width: 90%;
+                padding: 30px 15px;
+            }
+
+            .sponsor-item img {
+                width: 120px;
+                height: 120px;
+            }
+        }
+
+        /* Special Alliances Section Styles */
+        .special-alliances-section {
+            background: var(--frost);
+            border: 1px solid rgba(214, 158, 102, 0.35);
+            padding: 40px 20px;
+            margin: 40px auto;
+            border-radius: 26px;
+            text-align: center;
+            width: 80%;
+            max-width: 1200px;
+            box-shadow: 0 35px 85px rgba(36, 16, 24, 0.15);
+        }
+
+        .special-alliances-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 34px;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            color: var(--text-main);
+            margin-bottom: 30px;
+        }
+
+        .special-alliances-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            margin: 15px auto 0;
+            background: linear-gradient(120deg, var(--accent-soft), #ffe7b0);
+            border-radius: 999px;
+        }
+
+        .special-alliances-container {
+            display: flex;
+            justify-content: center;
+            align-items: stretch;
+            flex-wrap: wrap;
+            gap: 45px;
+            padding: 20px;
+        }
+
+        .special-alliances-item {
+            position: relative;
+            width: 230px;
+            height: 280px;
+            padding: 18px;
+            border-radius: 32px;
+            background: linear-gradient(135deg, rgba(210, 71, 98, 0.35), rgba(246, 182, 106, 0.35));
+            box-shadow: 0 25px 55px rgba(36, 16, 24, 0.25);
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
+        }
+
+        .special-alliances-item::before {
+            content: '';
+            position: absolute;
+            inset: 4px;
+            border-radius: 28px;
+            background: rgba(255, 247, 241, 0.92);
+            border: 1px solid rgba(246, 182, 106, 0.4);
+            box-shadow: inset 0 0 25px rgba(210, 71, 98, 0.08);
+            z-index: 0;
+        }
+
+        .special-alliances-item:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 35px 65px rgba(36, 16, 24, 0.35);
+        }
+
+        .special-alliances-item > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .alliance-image-container {
+            width: 100%;
+            height: 200px;
+            border-radius: 24px;
+            overflow: hidden;
+            padding: 6px;
+            background: linear-gradient(135deg, rgba(246, 182, 106, 0.65), rgba(210, 71, 98, 0.65));
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .alliance-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 18px;
+            box-shadow: 0 12px 25px rgba(36, 16, 24, 0.25);
+            transition: transform 0.4s ease;
+        }
+
+        .special-alliances-item:hover .alliance-image-container img {
+            transform: scale(1.05);
+        }
+
+        .alliance-name {
+            margin-top: 14px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2em;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--text-main);
+        }
+
+        @media (max-width: 768px) {
+            .special-alliances-section {
+                width: 90%;
+                padding: 30px 15px;
+            }
+
+            .special-alliances-item {
+                width: 150px;
+                height: 150px;
+            }
+        }
+
+        /* Games Section Styles */
+        .games-section {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 40px 20px;
+            margin: 40px auto;
+            border-radius: 20px;
+            text-align: center;
+            width: 80%;
+            max-width: 1200px;
+            border: 1px solid rgba(79, 172, 254, 0.2);
+        }
+        .games-title {
+            font-size: 32px;
+            color: #ffffff;
+            margin-bottom: 30px;
+            position: relative;
+            padding-bottom: 15px;
+            font-family: 'Dancing Script', cursive;
+            background: linear-gradient(to right, #4facfe, #00f2fe);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .games-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(to right, #4facfe, #00f2fe);
+            border-radius: 2px;
+        }
+
+        .games-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 40px;
+            padding: 20px;
+        }
+
+        .game-item {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            transition: transform 0.3s ease;
+        }
+
+        .game-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .game-image-container {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid #4facfe;
+            box-shadow: 0 0 15px rgba(79, 172, 254, 0.3);
+            position: relative;
+        }
+
+        .game-image-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 50%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            z-index: 1;
+        }
+
+        .game-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .game-item:hover .game-image-container img {
+            transform: scale(1.1);
+        }
+
+        .game-name {
+            position: absolute;
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #ffffff;
+            font-size: 18px;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .game-item:hover .game-name {
+            opacity: 1;
+        }
+
+        @media (max-width: 768px) {
+            .games-section {
+                width: 90%;
+                padding: 30px 15px;
+            }
+
+            .game-item {
+                width: 150px;
+                height: 150px;
+            }
+        }
+
+        nav {
+            background: rgba(20, 30, 48, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 10px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        nav a {
+            display: inline-block;
+            color: white;
+            text-align: center;
+            padding: 14px 25px;
+            text-decoration: none;
+            font-size: 1.1em;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            margin: 0 15px;
+            border-radius: 25px;
+            background: linear-gradient(to right, #4facfe, #00f2fe);
+        }
+
+        nav a:hover, nav a.active {
+            background: linear-gradient(to right, #00f2fe, #4facfe);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(79, 172, 254, 0.3);
+        }
+
+        @media screen and (max-width: 768px) {
+            nav a {
+                padding: 10px 15px;
+                font-size: 0.9em;
+                margin: 0 8px;
+            }
+        }
+        
+        :root {
+            /* Rose, berry & soft gold base (match chaddibaddi) */
+            --ink: #241018;
+            --ink-soft: #4a2230;
+            --ink-glass: rgba(255, 247, 241, 0.97);
+            --frost: rgba(255, 240, 243, 0.94);
+            --card: rgba(255, 248, 244, 0.9);
+            --text-main: #241018;
+            --accent: #d24762;      /* rich rose */
+            --accent-soft: #f6b66a; /* soft gold */
+        }
+
+        body {
+            font-family: 'Inter', Arial, sans-serif;
+            background: radial-gradient(circle at top, #ffe3e6 0%, #ffc9d2 55%, #f3a8b2 100%);
+            color: var(--text-main);
+        }
+
+        header {
+            background: var(--ink-glass);
+            border-bottom: 1px solid rgba(214, 158, 102, 0.4);
+            box-shadow: 0 24px 60px rgba(143, 76, 72, 0.18);
+        }
+
+        header h1 {
+            font-family: 'Cormorant Garamond', serif;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            background: linear-gradient(120deg, var(--accent-soft), #ffe7b0);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        nav {
+            background: var(--ink-glass);
+            border-bottom: 1px solid rgba(214, 158, 102, 0.4);
+            backdrop-filter: blur(18px);
+        }
+
+        nav a {
+            font-family: 'Inter', sans-serif;
+            letter-spacing: 0.18em;
+            border-radius: 999px;
+            border: 1px solid rgba(214, 158, 102, 0.35);
+            background: transparent;
+            color: var(--text-main);
+            text-transform: uppercase;
+        }
+
+        nav a:hover,
+        nav a.active {
+            background: linear-gradient(120deg, var(--accent), var(--accent-soft));
+            color: #fff;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(143, 76, 72, 0.25);
+        }
+
+        .container,
+        .sponsors-section,
+        .special-alliances-section,
+        .games-section {
+            background: var(--frost);
+            border: 1px solid rgba(214, 158, 102, 0.35);
+            box-shadow: 0 30px 80px rgba(143, 76, 72, 0.15);
+        }
+
+        .section-title,
+        .sponsors-title,
+        .special-alliances-title,
+        .games-title {
+            font-family: 'Cormorant Garamond', serif;
+            text-transform: uppercase;
+            letter-spacing: 0.25em;
+            color: var(--text-main); /* solid dark for better readability */
+        }
+
+        .section-title::after,
+        .sponsors-title::after,
+        .special-alliances-title::after,
+        .games-title::after {
+            background: linear-gradient(120deg, var(--accent-soft), #ffe7b0);
+        }
+
+        .about-content,
+        .profile-section {
+            background: var(--card);
+            border-left: 4px solid var(--accent-soft);
+            color: var(--text-main);
+            box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.4);
+        }
+
+        .about-content:hover,
+        .profile-section:hover {
+            border-left-color: var(--accent);
+        }
+
+        .name-title {
+            color: var(--text-main); /* darker, royal look for names */
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .logo-container {
+            border: 3px solid rgba(246, 182, 106, 0.7);
+            box-shadow: 0 20px 45px rgba(143, 76, 72, 0.18);
+        }
+
+        .alliance-image-container,
+        .game-image-container {
+            border: 3px solid rgba(173, 216, 230, 0.18);
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.4);
+        }
+
+        .rule-card,
+        .sponsor-item,
+        .special-alliances-item,
+        .game-item {
+            background: rgba(10, 16, 24, 0.7);
+            border: 1px solid rgba(173, 216, 230, 0.12);
+            box-shadow: 0 25px 45px rgba(0, 0, 0, 0.35);
+        }
+
+        footer {
+            background: var(--ink-glass);
+            border-top: 1px solid rgba(39, 60, 86, 0.18);
+            color: var(--text-main);
+        }
+
+        .warning-stanza {
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(201, 153, 99, 0.35);
+            color: var(--text-main);
+            box-shadow: 0 25px 40px rgba(33, 46, 73, 0.12);
+        }
+
+        .warning-text h3 {
+            color: var(--accent);
+        }
+
+        audio,
+        .slideshow-controls,
+        button {
+            font-family: 'Inter', sans-serif;
+        }
+
+        audio + div button {
+            background: linear-gradient(135deg, var(--accent), var(--accent-soft));
+            color: #0e1720;
+            border-radius: 999px;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+        }
+    </style>
+</head>
+<body>
+  <audio id="backgroundMusic" loop autoplay style="position: fixed; bottom: 20px; right: 20px; z-index: 1000;">
+        <source src="C:\Users\adina\Downloads\awesome_chillar.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <div style="position: fixed; bottom: 80px; right: 20px; z-index: 1000; background: rgba(255, 255, 255, 0.2); padding: 12px 16px; border-radius: 16px; backdrop-filter: blur(12px); border: 1px solid rgba(214, 158, 102, 0.4); box-shadow: 0 18px 35px rgba(143, 76, 72, 0.16);">
+        <button onclick="toggleMusic()" style="background: linear-gradient(120deg, #d24762, #f6b66a); color: #fff; padding: 10px 20px; border: none; border-radius: 999px; cursor: pointer; transition: all 0.3s ease; font-weight: 600; letter-spacing: 0.1em;">
+            Toggle Music
+        </button>
+    </div>
+
+    <!-- Add JavaScript for audio control -->
+    <script>
+        const audio = document.getElementById('backgroundMusic');
+        function toggleMusic() {
+            if (audio.paused) {
+                audio.play();
+            } else {
+                audio.pause();
+            }
+        }
+        
+        // Add volume control
+        audio.volume = 0.5; // Set volume to 50%
+    </script>
+
+<header>
+    <div class="header-content">
+        <div class="logo-container">
+            <img src="C:\Users\adina\Downloads\WhatsApp Image 2025-03-02 at 12.21.21 AM.jpeg" alt="NAANO KI PALTAN Logo">
+        </div>
+    <h1>NAANO KI PALTAN</h1>
+    </div>
+</header>
+<nav>
+    <a href="index.html">Home</a>
+    <a href="images.html">Gallery</a>
+    <a href="rules and regulation.html">Rules</a>
+    <a href="bts.html">Behind the scene</a>
+</nav>
+
+<div class="container">
+    <section>
+        <h2 class="section-title">About Us</h2>
+        <p class="about-content">
+            NAANO KI PALTAN is a special space created by Adi for my close-knit group of friends. This website is designed to bring us together, allowing us to connect, share memories, and plan fun activities. The idea behind this platform is simple – to have a place where we can celebrate our friendship, engage in meaningful conversations, and create new experiences, whether it's through games, events, or just sharing our day-to-day lives. I built this website as a way to capture the essence of our bond and provide a digital space where we can relive our best moments. NAANO KI PALTAN is more than just a website; it's a reflection of the friendships and memories that make us who we are. It's a space for laughter, connection, and most importantly, staying united no matter where life takes us. Welcome to our digital home!
+        </p>
+    </section>
+    
+    <!-- Krish's Description Section -->
+    <section>
+        <h2 class="section-title">Meet Krish 07</h2>
+        <div class="profile-section">
+            <div class="logo-container">
+                <div class="car-logo">
+                    <div class="car-roof"></div>
+                    <div class="car-body"></div>
+                    <div class="wheel wheel-left"></div>
+                    <div class="wheel wheel-right"></div>
+                </div>
+            </div>
+            <div class="profile-content">
+                <div class="name-title">The Driving Enthusiast</div>
+                <p class="about-content">
+                    Krish is an adventurous spirit who is passionate about driving. Whether it's long road trips or exploring hidden gems in the city, Krish finds joy in the thrill of being behind the wheel. His love for cars is matched by his precision and focus on the road. What truly sets Krish apart is his calm demeanor, even in challenging situations, and his ability to stay level-headed while navigating any drive. He's incredibly responsible, ensuring both safety and fun while on the road. Krish's qualities of reliability, loyalty, and a zest for life make him the perfect companion for any journey—both literally and figuratively. Always ready for a new adventure, Krish is the friend you can count on for unforgettable road trips and great company.
+                </p>
+            </div>
+        </div>
+    </section>
+
+
+    <section>
+        <h2 class="section-title">Meet Keziah 08</h2>
+        <div class="profile-section">
+            <div class="logo-container">
+                <div class="healing-logo">
+                    <div class="healing-ripples">
+                        <div class="ripple"></div>
+                        <div class="ripple"></div>
+                        <div class="ripple"></div>
+                    </div>
+                    <div class="lotus">
+                        <div class="petal" style="--rotation: 0deg"></div>
+                        <div class="petal" style="--rotation: 60deg"></div>
+                        <div class="petal" style="--rotation: 120deg"></div>
+                        <div class="petal" style="--rotation: 180deg"></div>
+                        <div class="petal" style="--rotation: 240deg"></div>
+                        <div class="petal" style="--rotation: 300deg"></div>
+                        <div class="lotus-center"></div>
+                    </div>
+                    <div class="healing-symbols">
+                        <div class="symbol"></div>
+                        <div class="symbol"></div>
+                        <div class="symbol"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="profile-content">
+                <div class="name-title">The Empathetic Healer</div>
+                <p class="about-content">
+                    Keziah is the calm and nurturing presence in our group, always ready to listen and offer advice when needed. As the group's unofficial therapist, she has a unique ability to provide thoughtful insights and emotional support to everyone around her. Her empathetic nature and genuine concern for others make her the go-to person for comfort and guidance. Keziah's patience and understanding allow her to handle even the most sensitive conversations with care. She's non-judgmental, always offering a safe space for anyone who needs to express themselves. Her wisdom and ability to connect on a deep emotional level make her an invaluable friend and confidante, offering not only practical advice but also emotional healing for the group.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kavya's Description Section -->
+    <section>
+        <h2 class="section-title">Meet Kavya 12</h2>
+        <div class="profile-section">
+            <div class="logo-container">
+                <div class="sparkle-container">
+                    <div class="sparkle-rays">
+                        <div class="ray"></div>
+                        <div class="ray"></div>
+                        <div class="ray"></div>
+                        <div class="ray"></div>
+                        <div class="ray"></div>
+                        <div class="ray"></div>
+                        <div class="ray"></div>
+                        <div class="ray"></div>
+                    </div>
+                    <div class="sparkle"></div>
+                    <div class="sparkle-inner"></div>
+                </div>
+            </div>
+            <div class="profile-content">
+                <div class="name-title">The Radiant Spirit</div>
+                <p class="about-content">
+                    Kavya is the life of our group, always bringing a sense of joy and excitement wherever she goes. Her infectious laughter and positive energy light up any room, making everyone feel welcome and appreciated. As the charm of the group, Kavya has a unique ability to connect with people, putting them at ease with her warmth and friendly nature. She is a great listener and always knows how to brighten someone's day with a kind word or a spontaneous joke. Her confidence and charm make her not only fun to be around but also a source of strength for those who need a pick-me-up. Kavya's ability to keep the group united and her natural talent for spreading happiness makes her an invaluable friend who turns any moment into a memorable one.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2 class="section-title">Meet Joel 28</h2>
+        <div class="profile-section">
+            <div class="logo-container">
+                <div class="brain-logo">
+                    <div class="brain-waves">
+                        <div class="wave"></div>
+                        <div class="wave"></div>
+                        <div class="wave"></div>
+                    </div>
+                    <div class="lightbulb"></div>
+                    <div class="idea-sparks">
+                        <div class="spark"></div>
+                        <div class="spark"></div>
+                        <div class="spark"></div>
+                        <div class="spark"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="profile-content">
+                <div class="name-title">The Brilliant Problem Solver</div>
+                <p class="about-content">
+                    Joel is not only the handsome boy of the group, but also the one who always seems to have the right solution for any problem. His charm and good looks are matched by his remarkable ability to understand every situation, no matter how complicated or challenging. Joel has a sharp mind that helps him assess problems from every angle, and his calm demeanor allows him to remain composed in even the most stressful moments. His friends admire him for his thoughtful advice, practical solutions, and his unwavering support. Joel's reliability and intelligence make him the go-to person for advice or assistance. He always has a way of making everyone feel better, no matter the circumstances, and his presence brings a sense of assurance and confidence to the group. With Joel around, no problem ever seems too big to tackle.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    
+    <section>
+        <h2 class="section-title">Meet Naano 05</h2>
+        <div class="profile-section">
+            <div class="logo-container">
+                <div class="naano-logo">
+                    <div class="energy-circle"></div>
+                    <div class="dumbbell">
+                        <div class="dumbbell-bar"></div>
+                        <div class="weight weight-left"></div>
+                        <div class="weight weight-right"></div>
+                    </div>
+                    <div class="sparkle-emoji emoji-1">💪</div>
+                    <div class="sparkle-emoji emoji-2">😈</div>
+                    <div class="sparkle-emoji emoji-3">🎯</div>
+                    <div class="sparkle-emoji emoji-4">✨</div>
+                    <div class="mischief-stars">
+                        <div class="star"></div>
+                        <div class="star"></div>
+                        <div class="star"></div>
+                        <div class="star"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="profile-content">
+                <div class="name-title">The Playful Powerhouse</div>
+                <p class="about-content">
+                    Atharva, aka Naano, is the youngest in our group, and the one who's always up to some playful mischief. His pranks and cheeky humor keep the group entertained, making him the center of attention. But don't let his mischievous side fool you—Naano is also dedicated to the gym, working hard to stay fit and strong. While he loves to have fun and cause a little trouble, he's genuinely a good person at heart—loyal, caring, and always there for his friends. His energy and charm make him a cherished member of the group.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sana's Description Section -->
+    <section>
+        <h2 class="section-title">Meet Sana 10</h2>
+        <div class="profile-section">
+            <div class="logo-container">
+                <div class="sweet-logo">
+                    <div class="flower-container">
+                        <div class="flower-center"></div>
+                        <div class="flower-petal petal-1"></div>
+                        <div class="flower-petal petal-2"></div>
+                        <div class="flower-petal petal-3"></div>
+                        <div class="flower-petal petal-4"></div>
+                    </div>
+                    <div class="butterfly butterfly-1">
+                        <div class="butterfly-wing wing-left"></div>
+                        <div class="butterfly-wing wing-right"></div>
+                    </div>
+                    <div class="butterfly butterfly-2">
+                        <div class="butterfly-wing wing-left"></div>
+                        <div class="butterfly-wing wing-right"></div>
+                    </div>
+                    <div class="sparkle-heart heart-1"></div>
+                    <div class="sparkle-heart heart-2"></div>
+                </div>
+            </div>
+            <div class="profile-content">
+                <div class="name-title">The Sweet Soul</div>
+                <p class="about-content">
+                    Sana, the second youngest in our group, is undoubtedly one of the sweetest and kindest people you'll ever meet. Her gentle and caring nature makes her the go-to person when anyone needs a little extra love or support. Sana has a heart of gold and always goes out of her way to make others feel comfortable and happy. Whether it's with a kind word or a thoughtful gesture, she radiates positivity and warmth. Despite being the second youngest, Sana carries herself with maturity and grace, earning the affection and respect of everyone around her. Her loyalty, compassion, and bright smile make her an irreplaceable member of the group, always bringing joy and happiness to every moment.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sonali's Description Section -->
+    <section>
+        <h2 class="section-title">Meet Sonali 03</h2>
+        <div class="profile-section">
+            <div class="logo-container">
+                <div class="peace-logo">
+                    <div class="peace-circles">
+                        <div class="peace-circle"></div>
+                        <div class="peace-circle"></div>
+                        <div class="peace-circle"></div>
+                    </div>
+                    <div class="dove">
+                        <div class="dove-body"></div>
+                        <div class="dove-wing wing-left"></div>
+                        <div class="dove-wing wing-right"></div>
+                    </div>
+                    <div class="olive-branch">
+                        <div class="leaf"></div>
+                        <div class="leaf"></div>
+                        <div class="leaf"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="profile-content">
+                <div class="name-title">The Peaceful Mediator</div>
+        <p class="about-content">
+                    Sonali may not always be around for every plan, but when she is, her presence brings a sense of calm and balance to the group. As the peacemaker, Sonali has a remarkable ability to resolve conflicts and ease tensions with her understanding and thoughtful approach. She listens with an open heart and always offers words of wisdom that help others see things from a different perspective. Though she may come to plans rarely, her contributions are always meaningful, and her calm demeanor is a source of comfort for everyone. Sonali is dependable, supportive, and incredibly empathetic. Her ability to bring peace and harmony makes her an essential part of the group, and even when she's not physically present, her positive influence is felt by all.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2 class="section-title">Meet Truptraj 23</h2>
+        <div class="profile-section">
+            <div class="logo-container">
+                <div class="tabla-logo">
+                    <div class="rhythm-circle"></div>
+                    <div class="sound-wave">
+                        <div class="wave-line"></div>
+                        <div class="wave-line"></div>
+                        <div class="wave-line"></div>
+                    </div>
+                    <div class="tabla tabla-left" style="--rotation: -5deg">
+                        <div class="tabla-head"></div>
+                        <div class="tabla-rim"></div>
+                    </div>
+                    <div class="tabla tabla-right" style="--rotation: 5deg">
+                        <div class="tabla-head"></div>
+                        <div class="tabla-rim"></div>
+                    </div>
+                    <div class="music-note note-1">♪</div>
+                    <div class="music-note note-2">♫</div>
+                    <div class="music-note note-3">♪</div>
+                </div>
+            </div>
+            <div class="profile-content">
+                <div class="name-title">The Rhythmic Soul</div>
+        <p class="about-content">
+                    Truptraj may not have been with us from the start, but he quickly became an important part of our "Paltan." As the youngest tabla player, his musical talent adds a special vibe to our group. Truptraj is also known for his positivity—his upbeat and cheerful nature lifts everyone's spirits. Though he's often a bit late for plans, his energy always makes up for it. He has an amazing ability to bring people together with his music and charm. His dedication to his craft and ability to stay positive in any situation make him a beloved and essential member of our group.
+        </p>
+            </div>
+        </div>
+    </section>
+</div>
+
+<div class="special-alliances-section">
+    <div class="special-alliances-title">Special Mentions</div>
+    <div class="special-alliances-container">
+        <div class="special-alliances-item">
+            <div class="alliance-image-container">
+                <img src="C:\Users\adina\Downloads\WhatsApp Image 2025-03-17 at 4.57.09 PM.jpeg" alt="Jadhav Dada">
+            </div>
+            <div class="alliance-name">Jadhav Dada</div>
+        </div>
+        <div class="special-alliances-item">
+            <div class="alliance-image-container">
+                <img src="C:\Users\adina\Downloads\WhatsApp Image 2025-12-12 at 3.20.55 PM.jpeg" alt="Sai Radha">
+            </div>
+            <div class="alliance-name">Sai Radha</div>
+        </div>
+        <div class="special-alliances-item">
+            <div class="alliance-image-container">
+                <img src="C:\Users\adina\Downloads\WhatsApp Image 2025-03-04 at 3.19.43 PM.jpeg" alt= Divijaa>
+            </div>
+            <div class="alliance-name">Divijaa</div>
+        </div>
+    </div>
+</div>
+
+
+<footer>
+    <p>&copy; 2025 NAANO KI PALTAN. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
+
+
