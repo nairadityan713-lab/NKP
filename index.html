@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NAANO KI PALTAN</title>
+    <!-- Link to Google Fonts for custom font -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Rose, berry & soft gold base (slightly deeper/stronger) */
+            --canvas-top: #ffe3e6;
+            --canvas-mid: #ffc9d2;
+            --canvas-bottom: #f3a8b2;
+            --text-main: #241018;   /* deeper, royal plum */
+            --text-muted: #4a2230;  /* richer supporting text */
+            --panel-strong: rgba(255, 250, 244, 0.97);
+            --panel: rgba(255, 241, 235, 0.93);
+            --panel-soft: rgba(253, 229, 216, 0.9);
+            --nav-glass: rgba(255, 247, 241, 0.97);
+            --outline: rgba(214, 158, 102, 0.4); /* soft golden outline */
+            --shadow-lg: 0 24px 60px rgba(143, 76, 72, 0.22);
+            --shadow-md: 0 18px 35px rgba(143, 76, 72, 0.16);
+            --accent: #d24762;        /* rich rose red */
+            --accent-soft: #f6b66a;   /* warm soft gold */
+        }
+
+        /* --- Christmas decorations styles --- */
+        /* falling snow */
+        .snowflakes { position: fixed; inset: 0; pointer-events: none; z-index: 1400; overflow: hidden; }
+        .snowflake {
+            position: absolute;
+            top: -10vh;
+            /* rose/berry colored snowflakes */
+            color: var(--accent);
+            font-size: 18px;
+            user-select: none;
+            opacity: 0.95;
+            transform: translate3d(0,0,0);
+            animation-name: snow-fall;
+            animation-duration: 10s;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+            text-shadow: 0 6px 18px rgba(210,74,94,0.14), 0 1px 0 rgba(255,255,255,0.06);
+        }
+
+        /* small color variation for a warmer festive look */
+        .snowflake:nth-child(even){ color: var(--accent-soft); filter: saturate(0.9); }
+        .snowflake:nth-child(odd){ color: var(--accent); filter: drop-shadow(0 6px 14px rgba(210,74,94,0.08)); }
+
+        @keyframes snow-fall {
+            0% { transform: translateY(-10vh) rotate(0deg); opacity: 0.95; }
+            100% { transform: translateY(110vh) rotate(360deg); opacity: 0.95; }
+        }
+        /* variety by nth-child */
+        .snowflake:nth-child(1){ left:4%; font-size:18px; animation-duration:12s; animation-delay:0s; }
+        .snowflake:nth-child(2){ left:14%; font-size:14px; animation-duration:9s; animation-delay:1s; }
+        .snowflake:nth-child(3){ left:24%; font-size:20px; animation-duration:14s; animation-delay:2s; }
+        .snowflake:nth-child(4){ left:34%; font-size:16px; animation-duration:11s; animation-delay:0.5s; }
+        .snowflake:nth-child(5){ left:44%; font-size:22px; animation-duration:13s; animation-delay:1.2s; }
+        .snowflake:nth-child(6){ left:54%; font-size:15px; animation-duration:10s; animation-delay:0.2s; }
+        .snowflake:nth-child(7){ left:64%; font-size:18px; animation-duration:12s; animation-delay:2.1s; }
+        .snowflake:nth-child(8){ left:74%; font-size:14px; animation-duration:9s; animation-delay:1.7s; }
+        .snowflake:nth-child(9){ left:84%; font-size:20px; animation-duration:16s; animation-delay:0.9s; }
+        .snowflake:nth-child(10){ left:92%; font-size:12px; animation-duration:10s; animation-delay:2.5s; }
+
+        /* decorative garland above header */
+        .garland { position: fixed; top: 6px; left: 0; right: 0; height: 54px; display:flex; justify-content:center; gap:12px; align-items:flex-start; pointer-events:none; z-index:1200; }
+        .garland .bulb {
+            width:14px; height:14px; border-radius:50%;
+            box-shadow: 0 6px 14px rgba(0,0,0,0.18);
+            border: 2px solid rgba(255,255,255,0.35);
+        }
+        .garland .bulb:nth-child(odd){ background: var(--accent); transform: translateY(6px); }
+        .garland .bulb:nth-child(even){ background: var(--accent-soft); transform: translateY(-4px); }
+
+        /* small ribbon on top-right */
+        .corner-ribbon {
+            position: fixed; top: 12px; right: 12px; z-index:1300;
+            background: linear-gradient(120deg, rgba(210,74,94,1), rgba(246,182,106,0.95));
+            color: #fff; padding: 8px 12px; border-radius: 8px;
+            font-weight:700; letter-spacing:0.06em; box-shadow: var(--shadow-md);
+            transform: rotate(6deg);
+            pointer-events: none;
+        }
+        .corner-ribbon small { display:block; font-size:0.7em; opacity:0.95; }
+        /* end decorations */
+
+        body {
+            font-family: 'Inter', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: radial-gradient(circle at top, var(--canvas-top) 0%, var(--canvas-mid) 55%, var(--canvas-bottom) 100%);
+            color: var(--text-main);
+            padding-bottom: 60px;
+            letter-spacing: 0.02em;
+        }
+
+        header {
+            background: var(--nav-glass);
+            border-bottom: 1px solid var(--outline);
+            color: var(--text-main);
+            padding: 35px;
+            text-align: center;
+            box-shadow: var(--shadow-lg);
+            backdrop-filter: blur(18px);
+        }
+
+        h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.8em;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            background: linear-gradient(120deg, var(--accent), var(--accent-soft));
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            margin: 10px 0 0;
+        }
+
+        nav {
+            background: var(--nav-glass);
+            backdrop-filter: blur(18px);
+            padding: 10px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--outline);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: var(--shadow-md);
+        }
+
+        nav a {
+            display: inline-block;
+            color: var(--text-main);
+            text-align: center;
+            padding: 12px 24px;
+            text-decoration: none;
+            font-size: 0.9em;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            transition: all 0.3s ease;
+            margin: 0 18px;
+            border-radius: 999px;
+            border: 1px solid transparent;
+            background: transparent;
+        }
+
+        nav a:hover {
+            background: linear-gradient(120deg, var(--accent), var(--accent-soft));
+            color: #fff;
+            border-color: transparent;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(33, 46, 73, 0.25);
+        }
+
+        /* Refreshed content styling — same aesthetic, different layout */
+        .content {
+            max-width: 1200px;
+            margin: 28px auto;
+            padding: 44px;
+            border-radius: 30px;
+            /* layered rose-gold textures: soft gradient, subtle sheen and warm inner glow */
+            background-image:
+                linear-gradient(180deg, rgba(255, 243, 241, 0.95) 0%, rgba(255, 236, 233, 0.92) 48%, rgba(255, 244, 239, 0.9) 100%),
+                radial-gradient(circle at 10% 10%, rgba(210,74,94,0.06), transparent 12%),
+                linear-gradient(120deg, rgba(255,255,255,0.06), rgba(0,0,0,0.02));
+            background-blend-mode: normal, screen, overlay;
+            border: 1px solid rgba(214, 158, 102, 0.28);
+            box-shadow: 0 18px 50px rgba(210, 74, 94, 0.10), inset 0 2px 8px rgba(255,255,255,0.6);
+            color: var(--text-muted);
+            /* magazine columns for layout */
+            column-count: 2;
+            column-gap: 28px;
+        }
+
+        /* Keep the heading spanning both columns with a metallic rose-gold title */
+        .content h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.4em;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            margin: 0 0 18px 0;
+            column-span: all;
+            -webkit-column-span: all;
+            text-align: left;
+            /* metallic text gradient */
+            background: linear-gradient(90deg, #d24762 0%, #f6b66a 55%, #ffe8dc 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 2px 8px rgba(210,74,94,0.08);
+        }
+
+        /* Paragraph cards with rose-gold accents and texture */
+        .content p {
+            display: inline-block;
+            width: 100%;
+            box-sizing: border-box;
+            margin: 0 0 20px 0;
+            padding: 20px 22px;
+            background: linear-gradient(180deg, rgba(255,250,248,0.95), rgba(255,245,242,0.90));
+            backdrop-filter: blur(6px);
+            border-radius: 14px;
+            /* left metallic stripe using border-image for gradient */
+            border-left: 6px solid transparent;
+            border-image: linear-gradient(to bottom, var(--accent), var(--accent-soft)) 1;
+            box-shadow: 0 10px 30px rgba(33,46,73,0.06), inset 0 1px 0 rgba(255,255,255,0.6);
+            transition: transform 0.28s ease, box-shadow 0.28s ease, border-left-color 0.28s ease;
+            line-height: 1.75;
+            color: var(--text-muted);
+            font-size: 1.02em;
+        }
+
+        .content p:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 22px 46px rgba(33, 46, 73, 0.14);
+            /* subtle shift in accent on hover */
+            border-left-color: rgba(246,182,106,0.95);
+        }
+
+        /* single column on small screens */
+        @media screen and (max-width: 768px) {
+            .content {
+                column-count: 1;
+                padding: 26px;
+            }
+
+            .content h2 {
+                font-size: 2em;
+                text-align: center;
+                margin-bottom: 14px;
+            }
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            margin: 20px 0;
+            box-shadow: var(--shadow-lg);
+            border-radius: 22px;
+            overflow: hidden;
+            border: 1px solid var(--outline);
+            background: var(--panel-strong);
+        }
+
+        video {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 22px;
+        }
+
+        /* New styles for the portrait photo slideshow */
+        .photo-container {
+            position: relative;
+            width: 100%;
+            margin: 20px 0;
+            overflow: hidden;
+            border-radius: 22px;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--outline);
+            background: var(--panel-strong);
+        }
+
+        .portrait-frame {
+            width: 100%;
+            padding-top: 100%; /* 1:1 Aspect Ratio */
+            position: relative;
+         }
+
+        .portrait-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 22px;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .portrait-controls {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            gap: 10px;
+        }
+
+        .portrait-button {
+            background: linear-gradient(120deg, var(--accent), var(--accent-soft));
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 999px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 40px;
+            width: 40px;
+        }
+
+        .portrait-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 20px rgba(33, 46, 73, 0.25);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        footer {
+            background: var(--nav-glass);
+            color: var(--text-main);
+            text-align: center;
+            padding: 15px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+            box-shadow: 0 -12px 30px rgba(33, 46, 73, 0.12);
+            border-top: 1px solid var(--outline);
+            backdrop-filter: blur(18px);
+        }
+
+        @media screen and (max-width: 768px) {
+            h1 {
+                font-size: 2.6em;
+            }
+
+            nav a {
+                padding: 10px 15px;
+                font-size: 0.75em;
+                letter-spacing: 0.15em;
+            }
+
+            .content p {
+                padding: 20px;
+                font-size: 1.05em;
+            }
+
+            .content h2 {
+                font-size: 2.2em;
+            }
+
+            .logo {
+                width: 80px;
+                height: 80px;
+            }
+
+            .portrait-button {
+                height: 35px;
+                width: 35px;
+                font-size: 0.8em;
+            }
+        }
+
+        .header-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .logo {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: var(--shadow-md);
+            border: 2px solid var(--accent);
+            transition: transform 0.7s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.03) rotate(6deg);
+            box-shadow: 0 25px 40px rgba(33, 46, 73, 0.2);
+        }
+
+        /* Slideshow image with smooth fade transition */
+         .slideshow-image {
+             max-width: 90%;
+             max-height: 90vh;
+             border-radius: 18px;
+             box-shadow: 0 0 30px rgba(255, 255, 255, 0.15);
+             border: 1px solid var(--outline);
+             background: var(--panel-strong);
+             object-fit: cover;
+             display: block;               /* always present; visibility handled by opacity */
+             opacity: 0;                   /* start hidden */
+             transition: opacity 1s ease;  /* smooth fade (1s) */
+             animation: slowZoom 4s ease-out forwards;
+             pointer-events: none;         /* prevent clicks while transitioning */
+         }
+         .slideshow-modal.active .slideshow-image { opacity: 1; pointer-events: auto; }
+
+        /* Slow zoom in animation (4 seconds to match slide duration) */
+        @keyframes slowZoom {
+            0% {
+                transform: scale(1);
+            }
+            100% {
+                transform: scale(1.12);
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="snowflakes" aria-hidden="true">
+        <span class="snowflake">❆</span>
+        <span class="snowflake">❅</span>
+        <span class="snowflake">❆</span>
+        <span class="snowflake">❄</span>
+        <span class="snowflake">❅</span>
+        <span class="snowflake">❆</span>
+        <span class="snowflake">❄</span>
+        <span class="snowflake">❅</span>
+        <span class="snowflake">❆</span>
+        <span class="snowflake">❄</span>
+    </div>
+
+    <!-- Background audio: autoplay unmuted when homepage is visited -->
+    <audio id="backgroundMusic" loop autoplay style="position: fixed; bottom: 20px; right: 20px; z-index: 1000;">
+        <source src="assets/audio/background-home.mpeg" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <div style="position: fixed; bottom: 80px; right: 20px; z-index: 1000; background: rgba(255, 255, 255, 0.2); padding: 12px 16px; border-radius: 16px; backdrop-filter: blur(12px); border: 1px solid rgba(214, 158, 102, 0.4); box-shadow: 0 18px 35px rgba(143, 76, 72, 0.16);">
+        <button onclick="toggleMusic()" style="background: linear-gradient(120deg, #d24762, #f6b66a); color: #fff; padding: 10px 20px; border: none; border-radius: 999px; cursor: pointer; transition: all 0.3s ease; font-weight: 600; letter-spacing: 0.1em;">
+            Toggle Music
+        </button>
+    </div>
+
+    <!-- Add JavaScript for audio control -->
+    <script>
+        const audio = document.getElementById('backgroundMusic');
+        function toggleMusic() {
+            if (audio.paused) {
+                audio.play();
+            } else {
+                audio.pause();
+            }
+        }
+        
+        // Add volume control
+        audio.volume = 0.5; // Set volume to 50%
+    </script>
+
+    <header>
+        <!-- Updated header with logo -->
+        <div class="header-container">
+            <img src="assets/images/logo.jpeg" alt="Naano Logo" class="logo">
+            <h1 id="heading">NAANO KI PALTAN</h1>
+        </div>
+    </header>
+
+    <nav>
+        
+        <a href="aboutus.html">About Us</a>
+        <a href="images.html">Gallery</a>
+        <a href="rules and regulation.html">Rules</a>
+        <a href="bts.html">Behind the scene</a>
+        
+    </nav>
+
+    <!-- Video Section (restored) -->
+    <div class="video-container" aria-label="Hero video">
+        <video autoplay loop muted playsinline>
+            <!-- Replace the path below if your video is located elsewhere -->
+            <source src="assets/video/hero-video.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <!-- Content Section -->
+    <div class="content" id="home">
+        <h2>Welcome to our natkat group</h2>
+        <p>
+            I created this website, "NAANO KI PALTAN," as a special place for my friends and I to celebrate our bond, share memories, and stay connected. Life often gets busy, and it's easy to lose touch, but through this platform, I wanted to create something fun and meaningful where we can come together, reminisce about the good times, and look forward to creating many more. Whether it's through videos, photos, or updates, this website is my little tribute to the laughter, adventures, and all the moments that make our friendship truly special. I hope it serves as a reminder of the good times we've had and the even better ones ahead!
+        </p>
+        <p>
+            This website isn't just about keeping memories alive, it's also a place for us to stay upto date on what's happening in each other's lives, share thoughts, and make plans for the future. It's a way to keep our friendship alive, no matter the distance or the time apart. From silly jokes to deep conversations, this platform will hold the essence of everything we cherish. It's where we can leave behind our digital footprints and look back on them with smiles years from now.
+        </p>
+        <p>
+            "NAANO KI PALTAN" is all about celebrating the unique personalities, quirks, and endless support we offer each other. Whether we're going on spontaneous trips, celebrating special occasions, or simply spending time together, this site is a virtual space to store it all. To my paltan, this website is not just a gift to but a reminder of how important our bond is to me and how much fun we've had together, with so much more to come.
+        </p>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 NAANO AND FRIENDS</p>
+    </footer>
+
+    <!-- JavaScript for the hero slider -->
+    <script>
+        (function(){
+            const maxSlides = 10; // up to 10 photos
+            // Put your images at assets/images/hero1.jpg ... hero10.jpg or update the paths
+            const heroPaths = Array.from({length: maxSlides}, (_, i) => `assets/images/hero${i+1}.jpg`);
+
+            const track = document.getElementById('heroTrack');
+            const indicators = document.getElementById('heroIndicators');
+            const prevBtn = document.getElementById('heroPrev');
+            const nextBtn = document.getElementById('heroNext');
+            const slider = document.getElementById('heroSlider');
+
+            let current = 0;
+            let autoplay = true;
+            let interval = null;
+            const duration = 4000;
+
+            function build() {
+                track.innerHTML = '';
+                indicators.innerHTML = '';
+
+                heroPaths.forEach((path, idx) => {
+                    const slide = document.createElement('div');
+                    slide.className = 'hero-slide';
+                    slide.style.backgroundImage = `url("${path}")`;
+                    slide.setAttribute('role', 'listitem');
+                    // optional caption
+                    const caption = document.createElement('div');
+                    caption.className = 'hero-caption';
+                    caption.textContent = `Photo ${idx+1}`;
+                    slide.appendChild(caption);
+
+                    track.appendChild(slide);
+
+                    const dot = document.createElement('button');
+                    dot.className = 'hero-dot';
+                    dot.setAttribute('aria-label', `Go to slide ${idx+1}`);
+                    dot.addEventListener('click', () => goto(idx));
+                    indicators.appendChild(dot);
+                });
+
+                update();
+            }
+
+            function update() {
+                const translate = -current * 100;
+                track.style.transform = `translateX(${translate}%)`;
+                const dots = indicators.querySelectorAll('.hero-dot');
+                dots.forEach((d,i) => d.classList.toggle('active', i === current));
+            }
+
+            function goto(i) {
+                current = (i + heroPaths.length) % heroPaths.length;
+                update();
+            }
+
+            function next() { goto(current + 1); }
+            function prev() { goto(current - 1); }
+
+            function start() {
+                if (interval) return;
+                autoplay = true;
+                interval = setInterval(next, duration);
+            }
+
+            prevBtn.addEventListener('click', prev);
+            nextBtn.addEventListener('click', next);
+
+            // pause on hover, resume on leave (if autoplay was enabled)
+            slider.addEventListener('mouseenter', () => {
+                if (interval) { clearInterval(interval); interval = null; }
+            });
+            slider.addEventListener('mouseleave', () => {
+                if (autoplay && !interval) interval = setInterval(next, duration);
+            });
+
+            // keyboard navigation
+            window.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowRight') next();
+                if (e.key === 'ArrowLeft') prev();
+            });
+
+            // init
+            build();
+            // start autoplay loop immediately
+            start();
+        })();
+    </script>
+</body>
+</html>
+

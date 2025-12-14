@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Naano Ki Paltan - Rules & Regulations</title>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #1a2a6c, #2a4858, #2c5364);
+      color: #fff;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(to right, #141e30, #243b55);
+      color: white;
+      text-align: center;
+      padding: 20px 0;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .header-content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .logo-container {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 3px solid #4facfe;
+      box-shadow: 0 0 15px rgba(79, 172, 254, 0.3);
+      animation: pulse 2s infinite;
+    }
+
+    .logo-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .logo-container img:hover {
+      transform: scale(1.1);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 52px;
+      letter-spacing: 2px;
+      font-family: 'Dancing Script', cursive;
+      animation: fadeIn 1.5s ease-in-out;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      background: linear-gradient(to right, #4facfe, #00f2fe);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    nav {
+      background: rgba(20, 30, 48, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 10px 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    nav a {
+      display: inline-block;
+      color: white;
+      text-align: center;
+      padding: 14px 25px;
+      text-decoration: none;
+      font-size: 1.1em;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      margin: 0 15px;
+      border-radius: 25px;
+      background: linear-gradient(to right, #4facfe, #00f2fe);
+    }
+
+    nav a:hover, nav a.active {
+      background: linear-gradient(to right, #00f2fe, #4facfe);
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(79, 172, 254, 0.3);
+    }
+
+    .container {
+      width: 80%;
+      margin: 40px auto;
+      padding: 30px;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+      animation: slideUp 1s ease-out;
+    }
+
+    h2 {
+      color: #ffffff;
+      margin-bottom: 25px;
+      position: relative;
+      padding-bottom: 15px;
+      background: linear-gradient(to right, #4facfe, #00f2fe);
+      -webkit-background-clip: text;
+      color: transparent;
+      font-size: 32px;
+      text-align: center;
+    }
+
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(to right, #4facfe, #00f2fe);
+      border-radius: 2px;
+    }
+
+    .rules-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .rule-card {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 15px;
+      padding: 20px;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(79, 172, 254, 0.2);
+    }
+
+    .rule-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, transparent, rgba(79, 172, 254, 0.1), transparent);
+      transform: translateX(-100%);
+      transition: transform 0.6s ease;
+    }
+
+    .rule-card:hover::before {
+      transform: translateX(100%);
+    }
+
+    .rule-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(79, 172, 254, 0.3);
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .rule-number {
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(45deg, #4facfe, #00f2fe);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 1.2em;
+      box-shadow: 0 2px 10px rgba(79, 172, 254, 0.3);
+    }
+
+    .rule-content {
+      margin-top: 10px;
+      font-size: 1.1em;
+      line-height: 1.6;
+    }
+
+    .rule-title {
+      font-weight: 600;
+      color: #4facfe;
+      margin-bottom: 10px;
+      font-size: 1.2em;
+    }
+
+    .rule-description {
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    footer {
+      background: linear-gradient(to right, #141e30, #243b55);
+      color: white;
+      text-align: center;
+      padding: 15px 0;
+      position: fixed;
+      width: 100%;
+      bottom: 0;
+      box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        width: 90%;
+        padding: 20px;
+      }
+      
+      .header-content {
+        flex-direction: column;
+        gap: 15px;
+      }
+      
+      .logo-container {
+        width: 60px;
+        height: 60px;
+      }
+      
+      header h1 {
+        font-size: 32px;
+      }
+      
+      nav a {
+        padding: 10px 15px;
+        font-size: 0.9em;
+        margin: 0 8px;
+      }
+
+      .rules-container {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .warning-stanza {
+      margin: 40px auto;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      border: 2px solid rgba(255, 59, 59, 0.3);
+      box-shadow: 0 4px 15px rgba(255, 59, 59, 0.1);
+      animation: pulse 2s infinite;
+      max-width: 600px;
+      text-align: center;
+    }
+
+    .warning-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .warning-icon {
+      font-size: 2.5em;
+      animation: shake 2s infinite;
+    }
+
+    .warning-text h3 {
+      color: #ff3b3b;
+      margin: 0 0 10px 0;
+      font-size: 1.4em;
+      text-shadow: 0 0 10px rgba(255, 59, 59, 0.3);
+    }
+
+    .warning-text p {
+      margin: 0;
+      color: #fff;
+      font-size: 1.1em;
+      line-height: 1.6;
+      max-width: 500px;
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: rotate(0deg); }
+      25% { transform: rotate(-10deg); }
+      75% { transform: rotate(10deg); }
+    }
+
+    @media (max-width: 768px) {
+      .warning-content {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .warning-icon {
+        font-size: 2em;
+      }
+      
+      .warning-text h3 {
+        font-size: 1.2em;
+      }
+      
+      .warning-text p {
+        font-size: 1em;
+      }
+    }
+    
+    :root {
+      /* Rose, berry & soft gold base (match chaddibaddi) */
+      --ink: #241018;
+      --ink-soft: #4a2230;
+      --frost: rgba(255, 240, 243, 0.94);
+      --card: rgba(255, 248, 244, 0.9);
+      --text-main: #241018;
+      --accent: #d24762;
+      --accent-soft: #f6b66a;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: radial-gradient(circle at top, #ffe3e6 0%, #ffc9d2 55%, #f3a8b2 100%);
+      color: var(--text-main);
+    }
+
+    header {
+      background: rgba(255, 247, 241, 0.97);
+      border-bottom: 1px solid rgba(214, 158, 102, 0.4);
+      box-shadow: 0 25px 60px rgba(143, 76, 72, 0.16);
+    }
+
+    header h1 {
+      font-family: 'Cormorant Garamond', serif;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      background: linear-gradient(120deg, #ffeec2, var(--accent-soft));
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    nav {
+      background: rgba(255, 247, 241, 0.96);
+      border-bottom: 1px solid rgba(214, 158, 102, 0.4);
+      backdrop-filter: blur(18px);
+    }
+
+    nav a {
+      letter-spacing: 0.2em;
+      font-family: 'Inter', sans-serif;
+      border-radius: 999px;
+      border: 1px solid rgba(214, 158, 102, 0.4);
+      background: transparent;
+      color: var(--text-main);
+      text-transform: uppercase;
+      font-size: 0.9em;
+    }
+
+    nav a:hover,
+    nav a.active {
+      background: linear-gradient(120deg, var(--accent), var(--accent-soft));
+      color: #fff;
+      box-shadow: 0 12px 30px rgba(143, 76, 72, 0.2);
+      transform: translateY(-3px);
+    }
+
+    .container {
+      background: var(--frost);
+      border: 1px solid rgba(214, 158, 102, 0.4);
+      box-shadow: 0 30px 80px rgba(143, 76, 72, 0.16);
+    }
+
+    h2 {
+      font-family: 'Cormorant Garamond', serif;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      background: linear-gradient(120deg, #ffeec2, var(--accent-soft));
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    h2::after {
+      background: linear-gradient(120deg, var(--accent-soft), #ffe7b0);
+    }
+
+    .rule-card {
+      background: var(--card);
+      border: 1px solid rgba(214, 158, 102, 0.4);
+      box-shadow: 0 20px 45px rgba(143, 76, 72, 0.18);
+    }
+
+    .rule-number {
+      background: linear-gradient(120deg, var(--accent), var(--accent-soft));
+      color: #fff;
+    }
+
+    .rule-title {
+      color: var(--accent-soft);
+    }
+
+    .rule-description {
+      color: var(--text-main);
+    }
+
+    .warning-stanza {
+      background: rgba(255, 248, 244, 0.96);
+      border: 1px solid rgba(246, 182, 106, 0.5);
+      color: #000000;
+      box-shadow: 0 25px 45px rgba(143, 76, 72, 0.16);
+    }
+
+    .warning-text h3,
+    .warning-text p {
+      color: #000000;
+    }
+
+    footer {
+      background: rgba(255, 247, 241, 0.96);
+      border-top: 1px solid rgba(214, 158, 102, 0.4);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-content">
+      <div class="logo-container">
+        <img src="assets/images/logo.jpeg" alt="NAANO KI PALTAN Logo">
+      </div>
+      <h1>NAANO KI PALTAN</h1>
+    </div>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="aboutus.html">About Us</a>
+    <a href="images.html">Gallery</a>
+    <a href="bts.html">Behind the scene</a>
+  </nav>
+
+  <div class="container">
+    <h2>Group Code of Honor</h2>
+    <div class="rules-container">
+      <div class="rule-card">
+        <div class="rule-number">1</div>
+        <div class="rule-content">
+          <div class="rule-title">Respect is Must</div>
+          <div class="rule-description">No insults, no toxic talk. Good vibes only.</div>
+        </div>
+      </div>
+
+      <div class="rule-card">
+        <div class="rule-number">2</div>
+        <div class="rule-content">
+          <div class="rule-title">Group is Above All</div>
+          <div class="rule-description">We protect, support, and show up for each other. No flaking.</div>
+        </div>
+      </div>
+
+      <div class="rule-card">
+        <div class="rule-number">3</div>
+        <div class="rule-content">
+          <div class="rule-title">No Gossip, No Backbitching</div>
+          <div class="rule-description">If anyone is doing rr or anything wrong say it to their face or don't say it at all.</div>
+        </div>
+      </div>
+
+      <div class="rule-card">
+        <div class="rule-number">4</div>
+        <div class="rule-content">
+          <div class="rule-title">Zero Judgement Policy</div>
+          <div class="rule-description">No one in the Paltan is allowed to judge our group members, free to judge outsiders.</div>
+        </div>
+      </div>
+
+      <div class="rule-card">
+        <div class="rule-number">5</div>
+        <div class="rule-content">
+          <div class="rule-title">No One Gets Left on Read</div>
+          <div class="rule-description">Respond to every important update even if it's just a meme or a "😂".</div>
+        </div>
+      </div>
+
+      <div class="rule-card">
+        <div class="rule-number">6</div>
+        <div class="rule-content">
+          <div class="rule-title">Consistency is Key to Good Bond</div>
+          <div class="rule-description">Be regular to plans and meet us daily [especially sonali].</div>
+        </div>
+      </div>
+
+      <div class="rule-card">
+        <div class="rule-number">7</div>
+        <div class="rule-content">
+          <div class="rule-title">Consider Our Group as Safe Space</div>
+          <div class="rule-description">Come as you are. Rants, breakdowns, late-night overthinking-bring it.</div>
+        </div>
+      </div>
+
+      <div class="rule-card">
+        <div class="rule-number">8</div>
+        <div class="rule-content">
+          <div class="rule-title">No Ghosting Allowed</div>
+          <div class="rule-description">Participate! Ghosts belong in horror films, not this chat.</div>
+        </div>
+      </div>
+
+      <div class="rule-card">
+        <div class="rule-number">9</div>
+        <div class="rule-content">
+          <div class="rule-title">Meme Game Strong</div>
+          <div class="rule-description">Fresh, relatable, and Paltan-level content only.</div>
+        </div>
+      </div>
+
+      <div class="rule-card">
+        <div class="rule-number">10</div>
+        <div class="rule-content">
+          <div class="rule-title">Travel Plans = Group Discussion</div>
+          <div class="rule-description">No solo decisions unless you're paying for everyone.</div>
+        </div>
+      </div>
+
+      <div class="rule-card">
+        <div class="rule-number">11</div>
+        <div class="rule-content">
+          <div class="rule-title">Celebrate the Wins, Big or Small</div>
+          <div class="rule-description">Every success and wins to every individual in this group will be celebrated and reported to this group first.</div>
+        </div>
+      </div>
+
+      <div class="rule-card">
+        <div class="rule-number">12</div>
+        <div class="rule-content">
+          <div class="rule-title">No Unsending or Deletion of Messages</div>
+          <div class="rule-description">Deletion of memory or message is highly prohibited in this group.</div>
+        </div>
+      </div>
+
+      <div class="rule-card">
+        <div class="rule-number">13</div>
+        <div class="rule-content">
+          <div class="rule-title">Knock Before Entering the Lift</div>
+          <div class="rule-description">Irrespective of gender, you should knock first or else face the painful consequences.</div>
+        </div>
+      </div>
+
+      <div class="rule-card">
+        <div class="rule-number">14</div>
+        <div class="rule-content">
+          <div class="rule-title">Mental Health Matters</div>
+          <div class="rule-description">Check on every member and support everyone mentally also in difficult times.</div>
+        </div>
+      </div>
+
+      <div class="rule-card">
+        <div class="rule-number">15</div>
+        <div class="rule-content">
+          <div class="rule-title">NO RR [Most Important]</div>
+          <div class="rule-description">This rule is applied to every member and strict actions will be taken.</div>
+        </div>
+      </div>
+
+      <div class="rule-card">
+        <div class="rule-number">16</div>
+        <div class="rule-content">
+          <div class="rule-title">Don't Let Krish Enter Kitchen</div>
+          <div class="rule-description">This might be considered as major rule break, at your own risk.</div>
+        </div>
+      </div>
+
+      <div class="rule-card">
+        <div class="rule-number">17</div>
+        <div class="rule-content">
+          <div class="rule-title">Always Welcome Sudden Plans</div>
+          <div class="rule-description">No nakhras and be ready for instant plans.</div>
+        </div>
+      </div>
+
+      <div class="rule-card">
+        <div class="rule-number">18</div>
+        <div class="rule-content">
+          <div class="rule-title">Birthday Meetup at 12 Midnight</div>
+          <div class="rule-description">No changes to this rule, whosoever is allowed to come should be there.</div>
+        </div>
+      </div>
+
+      <div class="rule-card">
+        <div class="rule-number">19</div>
+        <div class="rule-content">
+          <div class="rule-title">Pineapple</div>
+          <div class="rule-description">A codeword used if anyone is spotted while doing any unfair practices.</div>
+        </div>
+      </div>
+
+      <div class="rule-card">
+        <div class="rule-number">20</div>
+        <div class="rule-content">
+          <div class="rule-title">Everyone Should Be Treated Equally</div>
+          <div class="rule-description">Every member in Naano ki Paltan should be treated equally and fairly.</div>
+        </div>
+      </div>
+
+      <div class="warning-stanza">
+        <div class="warning-content">
+          <div class="warning-icon">⚠️</div>
+          <div class="warning-text">
+            <h3>Important Notice</h3>
+            <p>Every rule should be followed to keep up the decorum of this paltan. Breaking of rules might cause trouble and could result in strict actions against the violator.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 NAANO KI PALTAN. All rights reserved.</p>
+  </footer>
+</body>
+</html>

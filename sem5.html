@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Prognosis AI</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+    
+body {
+margin: 0;
+min-height: 100vh;
+background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 25%, #16213e 50%, #0f3460 75%, #533483 100%);
+font-family: 'Inter', sans-serif;
+display: flex;
+flex-direction: column;
+align-items: stretch;
+justify-content: flex-start;
+color: #ffffff;
+overflow-x: hidden;
+}
+
+   
+body::before {
+content: '';
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background-image: 
+radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
+radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.2) 0%, transparent 50%);
+animation: float 20s ease-in-out infinite;
+z-index: -1;
+}
+
+@keyframes float {
+0%, 100% { transform: translateY(0px) rotate(0deg); }
+33% { transform: translateY(-20px) rotate(1deg); }
+66% { transform: translateY(10px) rotate(-1deg); }
+}
+
+.glass-card {
+background: rgba(255, 255, 255, 0.05);
+border-radius: 24px;
+box-shadow: 
+0 8px 32px rgba(0, 0, 0, 0.3),
+inset 0 1px 0 rgba(255, 255, 255, 0.1);
+border: 1px solid rgba(255, 255, 255, 0.1);
+padding: 60px 50px;
+max-width: 800px;
+width: 90%;
+margin: 100px auto 40px auto;
+text-align: left;
+backdrop-filter: blur(20px);
+animation: slideInUp 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+position: relative;
+overflow: hidden;
+}
+
+.glass-card::before {
+content: '';
+position: absolute;
+top: 0;
+left: -100%;
+width: 100%;
+height: 100%;
+background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+transition: left 0.5s;
+}
+
+.glass-card:hover::before {
+left: 100%;
+}
+
+@keyframes slideInUp {
+from { 
+opacity: 0; 
+transform: translateY(60px) scale(0.9); 
+}
+to { 
+opacity: 1; 
+transform: translateY(0) scale(1); 
+}
+}
+
+h2 {
+text-align: center;
+margin-bottom: 18px;
+font-size: 2.5rem;
+background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+letter-spacing: -1px;
+font-family: 'Poppins', sans-serif;
+font-weight: 700;
+line-height: 1.1;
+}
+
+.tagline {
+text-align: center;
+margin-top: -10px;
+margin-bottom: 40px;
+color: rgba(255, 255, 255, 0.8);
+font-size: 1.2rem;
+font-family: 'Inter', sans-serif;
+font-weight: 400;
+line-height: 1.6;
+}
+.question {
+margin-bottom: 25px;
+font-size: 1.1rem;
+line-height: 1.6;
+background: rgba(255, 255, 255, 0.03);
+border-left: 4px solid rgba(102, 126, 234, 0.6);
+padding: 20px 24px;
+border-radius: 12px;
+color: rgba(255, 255, 255, 0.9);
+border: 1px solid rgba(255, 255, 255, 0.05);
+transition: all 0.3s ease;
+position: relative;
+overflow: hidden;
+}
+
+.question::before {
+content: '';
+position: absolute;
+top: 0;
+left: -100%;
+width: 100%;
+height: 100%;
+background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.1), transparent);
+transition: left 0.5s;
+}
+
+.question:hover::before {
+left: 100%;
+}
+
+.question:hover {
+background: rgba(255, 255, 255, 0.08);
+border-left-color: rgba(102, 126, 234, 0.8);
+transform: translateX(5px);
+}
+
+.question label {
+display: block;
+margin-top: 12px;
+font-weight: 400;
+color: rgba(255, 255, 255, 0.7);
+font-family: 'Inter', sans-serif;
+cursor: pointer;
+transition: color 0.3s ease;
+padding: 8px 0;
+}
+
+.question label:hover {
+color: rgba(255, 255, 255, 0.9);}
+.question input[type="radio"] {
+margin-right: 10px;
+accent-color: #667eea;
+transform: scale(1.2);
+}
+
+.predict-btn
+{
+display: block;
+margin: 40px auto 20px auto;
+padding: 18px 50px;
+font-size: 1.2rem;
+background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+color: #fff;
+border: none;
+border-radius: 50px;
+text-decoration: none;
+font-weight: 600;
+font-family: 'Inter', sans-serif;
+box-shadow: 
+0 8px 32px rgba(102, 126, 234, 0.3),
+0 4px 16px rgba(0, 0, 0, 0.2);
+transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+letter-spacing: 0.5px;
+cursor: pointer;
+position: relative;
+overflow: hidden;
+}
+.predict-btn::before {
+content: '';
+position: absolute;
+top: 0;
+left: -100%;
+width: 100%;
+height: 100%;
+background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+transition: left 0.5s;
+}
+
+.predict-btn:hover::before 
+{left: 100%;
+}
+
+.predict-btn:hover {
+background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+transform: translateY(-3px) scale(1.05);
+box-shadow: 
+0 12px 40px rgba(102, 126, 234, 0.4),
+0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+#alert-message {
+display: none;
+margin-top: 20px;
+margin-bottom: 0;
+padding: 16px 20px;
+background: rgba(255, 193, 7, 0.1);
+color: #ffc107;
+border-left: 5px solid #ffc107;
+border-radius: 12px;
+font-size: 1rem;
+border: 1px solid rgba(255, 193, 7, 0.2);
+backdrop-filter: blur(10px);
+}
+
+#result {
+margin-top: 40px;
+padding: 30px 25px;
+background: rgba(255, 255, 255, 0.05);
+border-left: 5px solid rgba(49, 64, 134, 0.8);
+border-radius: 16px;
+color: rgba(255, 255, 255, 0.9);
+font-size: 1.1rem;
+border: 1px solid rgba(255, 255, 255, 0.1);
+backdrop-filter: blur(10px);
+animation: fadeIn 0.8s ease-in-out;}
+
+@keyframes fadeIn {
+from { opacity: 0; transform: translateY(20px); }
+to { opacity: 1; transform: translateY(0); }
+}
+
+#result p {
+margin-bottom: 15px;
+line-height: 1.6;
+}
+
+#result strong {
+color: #f3e88a;
+font-weight: 600;
+}
+
+ul {
+padding-left: 25px;
+list-style-type: none;
+}
+
+ul li {
+margin-bottom: 12px;
+padding: 12px 16px;
+background: rgba(255, 255, 255, 0.03);
+border-radius: 8px;
+border: 1px solid rgba(255, 255, 255, 0.05);
+position: relative;
+transition: all 0.3s ease;
+}
+
+ul li::before {
+content: '▸';
+color: #667eea;
+font-weight: bold;
+position: absolute;
+left: -20px;
+top: 12px;
+}
+
+ul li:hover {
+background: rgba(255, 255, 255, 0.08);
+transform: translateX(5px);
+}
+
+ul li strong {
+color: #f093fb;
+font-weight: 600;
+}
+
+@media (max-width: 768px) {
+.glass-card { 
+padding: 40px 30px; 
+margin: 80px 20px 30px 20px;
+}
+h2 { 
+font-size: 2rem; 
+}
+.tagline {
+font-size: 1.1rem;
+}
+.question {
+font-size: 1rem;
+padding: 16px 20px;
+}
+.predict-btn {
+padding: 16px 40px;
+font-size: 1.1rem;
+}
+}
+
+@media (max-width: 480px) {
+.glass-card { 
+padding: 30px 20px; 
+}
+h2 { 
+font-size: 1.8rem; 
+}
+.question {
+font-size: 0.95rem;
+padding: 14px 16px;
+}
+}
+</style>
+</head>
+<body>
+
+<div class="glass-card">
+  <h2>Prognosis AI</h2>
+<p class="tagline">See tomorrow's skills, Today</p>
+<form id="quizForm">
+      
+<div class="question">1. Do you enjoy solving puzzles or playing strategy games?
+<label><input type="radio" name="q1" value="problem_solving"> Yes</label>
+<label><input type="radio" name="q1" value=""> No</label>
+</div>
+
+<div class="question">2. Do you often come up with new ideas or love making art/music?
+<label><input type="radio" name="q2" value="creativity"> Yes</label>
+<label><input type="radio" name="q2" value=""> No</label>
+</div>
+<div class="question">3. Do people often come to you for advice or emotional support?
+<label><input type="radio" name="q3" value="empathy"> Yes</label>
+<label><input type="radio" name="q3" value=""> No</label>
+</div>
+<div class="question">4. Do you like organizing group activities or leading a team?
+<label><input type="radio" name="q4" value="leadership"> Yes</label>
+<label><input type="radio" name="q4" value=""> No</label>
+</div>
+<div class="question">5. Are you someone who always double-checks work for errors?
+<label><input type="radio" name="q5" value="attention_to_detail"> Yes</label><label><input type="radio" name="q5" value=""> No</label>
+</div>
+<div class="question">6. Do you find it easy to explain complex topics to others in a simple way?
+<label><input type="radio" name="q6" value="communication"> Yes</label>
+<label><input type="radio" name="q6" value=""> No</label>
+</div>
+<div class="question">7. When faced with a complex problem, do you break it down into smaller parts?
+<label><input type="radio" name="q7" value="problem_solving"> Yes</label>
+<label><input type="radio" name="q7" value=""> No</label>
+</div>
+<div class="question">8. Do you enjoy personalizing your belongings or workspace?
+<label><input type="radio" name="q8" value="creativity"> Yes</label>
+<label><input type="radio" name="q8" value=""> No</label>
+</div>
+<div class="question">9. Are you good at understanding other people's feelings or situations?
+<label><input type="radio" name="q9" value="empathy"> Yes</label>
+<label><input type="radio" name="q9" value=""> No</label>
+</div>
+<div class="question">10. Are you comfortable delegating tasks to others in a group setting?
+<label><input type="radio" name="q10" value="leadership"> Yes</label>
+<label><input type="radio" name="q10" value=""> No</label>
+</div>
+<div class="question">11. Do you notice small details that others often miss?
+<label><input type="radio" name="q11" value="attention_to_detail"> Yes</label>
+<label><input type="radio" name="q11" value=""> No</label>
+</div>
+<div class="question">12. Are you considered a good listener by your friends?
+<label><input type="radio" name="q12" value="communication"> Yes</label>
+<label><input type="radio" name="q12" value=""> No</label>
+</div>
+<div class="question">13. When a project's goals suddenly change, are you more energized by the new challenge or frustrated by the disruption?<label><input type="radio" name="q13" value="adaptability"> Energized by the new challenge</label>
+<label><input type="radio" name="q13" value=""> Frustrated by the disruption</label>
+</div>
+<div class="question">14. When faced with a complex set of data, is your first instinct to look for patterns, trends, and logical connections?
+<label><input type="radio" name="q14" value="analytical_thinking"> Yes</label>
+<label><input type="radio" name="q14" value=""> No</label>
+</div>
+<div class="question">15. Do you often think about the long-term consequences of today's actions, both for yourself and for others?
+<label><input type="radio" name="q15" value="strategic_thinking"> Yes</label>
+<label><input type="radio" name="q15" value=""> No</label>
+</div>
+<div class="question">16. When analyzing a problem, do you tend to map out how all the different parts are interconnected?
+<label><input type="radio" name="q16" value="systems_thinking"> Yes</label>
+<label><input type="radio" name="q16" value=""> No</label>
+</div>
+<div class="question">17. Do you prefer environments that are constantly changing over those that are stable and predictable?
+<label><input type="radio" name="q17" value="adaptability"> Yes, I prefer changing environments</label>
+<label><input type="radio" name="q17" value=""> No, I prefer stable environments</label>
+</div>
+<div class="question">18. Do you enjoy breaking down complex arguments or ideas to find their logical strengths and weaknesses?
+<label><input type="radio" name="q18" value="analytical_thinking"> Yes</label>
+<label><input type="radio" name="q18" value=""> No</label>
+</div>
+<div class="question">19. Are you more focused on achieving the final goal, even if it means changing the plan, or on executing the current plan perfectly?
+<label><input type="radio" name="q19" value="strategic_thinking"> Achieving the final goal</label>
+<label><input type="radio" name="q19" value=""> Executing the plan perfectly</label>
+</div>
+<div class="question">20. Do you believe that to truly solve an issue, you must first understand the entire system it belongs to?
+<label><input type="radio" name="q20" value="systems_thinking"> Yes</label>
+<label><input type="radio" name="q20" value=""> No</label>
+</div>
+<button type="button" class="predict-btn" onclick="calculateSkill()">Predict My Skill</button>
+</form>
+<div id="alert-message"></div>
+<div id="result"></div>
+</div>
+<script>
+function calculateSkill() {
+const form = document.forms["quizForm"];
+const scores = {
+creativity: 0,
+problem_solving: 0,
+leadership: 0,
+empathy: 0,
+attention_to_detail: 0,
+communication: 0,
+adaptability: 0,
+analytical_thinking: 0,
+strategic_thinking: 0,
+systems_thinking: 0
+};
+
+let answered = false;
+for (let i = 1; i <= 20; i++) {
+const val = form[`q${i}`].value;
+if (val) {
+scores[val]++;
+answered = true;
+}
+
+}
+
+
+const alertDiv = document.getElementById("alert-message");
+const resultDiv = document.getElementById("result");
+if (!answered) {
+alertDiv.style.display = "block";
+alertDiv.textContent = "Please answer at least one question before predicting your skill.";
+resultDiv.innerHTML = "";
+return;
+} else {
+alertDiv.style.display = "none";
+}
+
+const topSkill = Object.entries(scores).reduce((a, b) => b[1] > a[1] ? b : a)[0];
+
+const jobs = {
+creativity: [
+{ title: "Graphic Designer", description: "Creates visual concepts to communicate ideas that inspire, inform, or captivate consumers." },
+{ title: "Content Creator", description: "Produces entertaining or educational material for online audiences." },
+{ title: "UX Designer", description: "Designs user-friendly and accessible digital products." },
+{ title: "Art Director", description: "Manages the overall visual style and images in media." }
+],
+problem_solving: [
+{ title: "Software Developer", description: "Designs, develops, and maintains software systems." },
+{ title: "Data Scientist", description: "Analyzes complex data to extract knowledge and insights." },
+{ title: "Cybersecurity Analyst", description: "Protects computer networks and systems from security threats." },
+{ title: "Financial Analyst", description: "Guides businesses and individuals in decisions about spending and investing." }
+],
+leadership: [
+{ title: "Project Manager", description: "Organizes and oversees projects to ensure they are completed on time and within budget." },
+{ title: "Startup Founder", description: "Establishes and runs a new business venture." },
+{ title: "Business Consultant", description: "Advises organizations on improving their performance and efficiency." },
+{ title: "Coach", description: "Trains and guides individuals or teams to achieve specific personal or professional goals." }
+],
+empathy: [
+{ title: "Psychologist", description: "Studies mental processes and human behavior." },
+{ title: "HR Manager", description: "Oversees a company's recruitment, and employee relations." },
+{ title: "Social Worker", description: "Helps individuals and families cope with problems in their everyday lives." },
+{ title: "Counselor", description: "Provides guidance to individuals and groups on personal, social, or psychological problems." }
+],
+attention_to_detail: [
+{ title: "Editor", description: "Reviews and revises content for publication." },
+{ title: "Accountant", description: "Manages financial records for businesses and individuals." },
+{ title: "Quality Analyst", description: "Tests products to ensure they meet quality standards." },
+{ title: "Lab Technician", description: "Performs tests and analyses in a scientific laboratory." }
+],
+communication: [
+{ title: "Public Relations Specialist", description: "Manages the public image of a client or organization." },
+{ title: "Journalist", description: "Gathers, writes, and reports news stories." },
+{ title: "Sales Representative", description: "Sells products or services to businesses and consumers." },
+{ title: "Corporate Trainer", description: "Teaches skills and knowledge to employees." }
+],
+adaptability: [
+{ title: "Event Manager", description: "Plans and executes events like conferences and parties." },
+{ title: "Management Consultant", description: "Helps organizations improve their performance by solving problems." },
+{ title: "ER Doctor", description: "Provides immediate medical care to patients in emergency situations." },
+{ title: "Freelancer", description: "Works on a flexible, project-by-project basis across various industries." }
+],
+analytical_thinking: [
+{ title: "Data Analyst", description: "Collects, processes, and performs statistical analyses of data." },
+{ title: "Economist", description: "Studies the production and distribution of resources, goods, and services." },
+{ title: "IT Systems Analyst", description: "Designs and improves computer systems for organizations." },
+{ title: "Research Scientist", description: "Conducts scientific experiments and analyses to advance knowledge." }
+],
+strategic_thinking: [
+{ title: "Urban Planner", description: "Develops land use plans for communities." },
+{ title: "CEO", description: "Manages a company's overall operations and resources." },
+{ title: "Market Research Analyst", description: "Studies market conditions to examine potential sales of a product or service." },
+{ title: "Venture Capitalist", description: "Invests in startup companies with high growth potential." }
+],
+systems_thinking: [
+{ title: "Systems Engineer", description: "Designs and manages complex engineering systems over their life cycles." },
+{ title: "Supply Chain Manager", description: "Oversees the entire lifecycle of a product, from acquisition to distribution." },
+{ title: "Enterprise Architect", description: "Aligns a company's IT strategy with its business objectives." },
+{ title: "Ecologist", description: "Studies the relationships between living organisms and their environment." }
+]
+
+};
+
+const suggestions = jobs[topSkill];
+resultDiv.innerHTML = `
+<p>Your top skill appears to be: <strong>${topSkill.replace(/_/g, " ").toUpperCase()}</strong></p>
+<p>Here are some career options that suit your skill:</p>
+<ul>${suggestions.map(job => `<li><strong>${job.title}:</strong> ${job.description}</li>`).join("")}</ul>
+`;
+}
+</script>
+</body>
+</html>

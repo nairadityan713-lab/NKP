@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prognosis AI</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+    
+body {
+margin: 0;
+min-height: 100vh;
+background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 25%, #16213e 50%, #0f3460 75%, #533483 100%);
+font-family: 'Inter', sans-serif;
+display: flex;
+flex-direction: column;
+align-items: stretch;
+justify-content: flex-start;
+color: #ffffff;
+overflow-x: hidden;
+}
+
+body::before {
+content: '';
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background-image: 
+radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
+radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.2) 0%, transparent 50%);
+animation: float 20s ease-in-out infinite;
+z-index: -1;
+}
+@keyframes float {
+0%, 100% { transform: translateY(0px) rotate(0deg); }
+33% { transform: translateY(-20px) rotate(1deg); }
+66% { transform: translateY(10px) rotate(-1deg); }
+}
+.navbar {
+width: 100%;
+background: rgba(15, 15, 35, 0.8);
+backdrop-filter: blur(20px);
+border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+display: flex;
+align-items: center;
+justify-content: space-between;
+padding: 20px 60px;
+position: fixed;
+top: 0;
+left: 0;
+z-index: 1000;
+transition: all 0.3s ease;
+}
+
+.navbar:hover {
+background: rgba(15, 15, 35, 0.95);
+}
+
+.navbar .logo {
+font-family: 'Poppins', sans-serif;
+font-weight: 700;
+font-size: 1.8rem;
+background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+letter-spacing: 1px;
+position: relative;
+}
+
+.logo::after {
+content: '';
+position: absolute;
+bottom: -5px;
+left: 0;
+width: 100%;
+height: 2px;
+background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+transform: scaleX(0);
+transition: transform 0.3s ease;
+}
+
+.logo:hover::after {
+transform: scaleX(1);
+}
+
+.hero-section {
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+min-height: 100vh;
+padding-top: 120px;
+padding-bottom: 80px;
+position: relative;
+}
+.glass-card {background: rgba(255, 255, 255, 0.05);
+border-radius: 24px;
+box-shadow: 
+0 8px 32px rgba(0, 0, 0, 0.3),
+inset 0 1px 0 rgba(255, 255, 255, 0.1);
+border: 1px solid rgba(255, 255, 255, 0.1);
+padding: 80px 60px;
+max-width: 600px;
+width: 90%;
+text-align: center;
+backdrop-filter: blur(20px);
+animation: slideInUp 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+position: relative;
+overflow: hidden;
+}
+.glass-card::before {
+content: '';
+position: absolute;
+top: 0;
+left: -100%;
+width: 100%;
+height: 100%;
+background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+transition: left 0.5s;
+}
+
+.glass-card:hover::before {
+left: 100%;
+}
+
+@keyframes slideInUp {
+from { 
+opacity: 0; 
+transform: translateY(60px) scale(0.9); 
+}
+to { 
+opacity: 1; 
+transform: translateY(0) scale(1); 
+}
+}
+
+.hero-title {
+font-family: 'Poppins', sans-serif;
+color: #ffffff;
+font-size: 3.2rem;
+margin-bottom: 24px;
+letter-spacing: -1px;
+font-weight: 700;
+background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+line-height: 1.1;
+}
+
+.hero-tagline {
+color: rgba(255, 255, 255, 0.8);
+font-size: 1.3rem;
+margin-bottom: 50px;
+font-weight: 400;
+line-height: 1.6;
+max-width: 500px;
+margin-left: auto;
+margin-right: auto;
+}
+
+.ai-graphic {
+ margin-bottom: 50px;
+display: flex;
+justify-content: center;
+position: relative;
+}
+
+.ai-graphic::before {
+content: '';
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+width: 200px;
+height: 200px;
+background: radial-gradient(circle, rgba(102, 126, 234, 0.2) 0%, transparent 70%);
+border-radius: 50%;
+animation: pulse 3s ease-in-out infinite;
+}
+
+@keyframes pulse {
+0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
+50% { transform: translate(-50%, -50%) scale(1.1); opacity: 0.8; }
+}
+
+.footer {
+width: 100%;
+text-align: center;
+padding: 30px 0 20px 0;
+color: rgba(255, 255, 255, 0.6);
+font-size: 0.95rem;
+background: none;
+font-family: 'Inter', sans-serif;
+margin-top: auto;
+border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.predict-btn {
+display: inline-block;
+margin-top: 30px;
+padding: 18px 50px;
+font-size: 1.2rem;
+background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+color: #fff;
+border: none;
+border-radius: 50px;
+text-decoration: none;
+font-weight: 600;
+font-family: 'Inter', sans-serif;
+box-shadow: 
+0 8px 32px rgba(102, 126, 234, 0.3),
+0 4px 16px rgba(0, 0, 0, 0.2);
+transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+letter-spacing: 0.5px;
+cursor: pointer;
+position: relative;
+overflow: hidden;
+}
+
+.predict-btn::before {
+content: '';
+position: absolute;
+top: 0;
+left: -100%;
+width: 100%;
+height: 100%;
+background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+transition: left 0.5s;
+}
+.predict-btn:hover::before {
+left: 100%;
+}
+
+.predict-btn:hover {
+background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+transform: translateY(-3px) scale(1.05);
+box-shadow: 
+0 12px 40px rgba(102, 126, 234, 0.4),
+0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.why-ai-btn {
+background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+color: #fff;
+border: none;
+border-radius: 25px;
+padding: 12px 28px;
+font-size: 0.95rem;
+font-family: 'Inter', sans-serif;
+font-weight: 500;
+cursor: pointer;
+box-shadow: 0 4px 20px rgba(245, 87, 108, 0.3);
+transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+position: relative;
+overflow: hidden;
+}
+
+.why-ai-btn::before {
+content: '';
+position: absolute;
+top: 0;
+left: -100%;
+width: 100%;
+height: 100%;
+background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+transition: left 0.5s;
+}
+.why-ai-btn:hover::before {
+left: 100%;
+}
+
+.why-ai-btn:hover {
+background: linear-gradient(135deg, #f5576c 0%, #f093fb 100%);
+transform: translateY(-2px) scale(1.05);
+box-shadow: 0 6px 25px rgba(245, 87, 108, 0.4);
+}
+
+   
+.ai-graphic svg {
+filter: drop-shadow(0 8px 24px rgba(102, 126, 234, 0.3));
+animation: floatIcon 6s ease-in-out infinite;
+}
+
+@keyframes floatIcon {
+0%, 100% { transform: translateY(0px) rotate(0deg); }
+33% { transform: translateY(-10px) rotate(2deg); }
+66% { transform: translateY(5px) rotate(-1deg); }
+}
+
+@media (max-width: 768px) {
+.navbar { 
+padding: 15px 20px; 
+}
+.glass-card { 
+padding: 50px 30px; 
+margin: 0 20px;
+}
+.hero-title { 
+font-size: 2.2rem; 
+}
+.hero-tagline {
+font-size: 1.1rem;
+}
+.ai-graphic svg { 
+width: 100px; height: 100px; 
+}
+.predict-btn {
+padding: 16px 40px;
+font-size: 1.1rem;
+}
+}
+
+@media (max-width: 480px) {
+.hero-title { 
+font-size: 1.8rem; 
+}
+.glass-card { 
+padding: 40px 20px; 
+}
+}
+</style>
+</head>
+<body>
+<div class="navbar">
+<div class="logo">Prognosis AI</div>
+<button class="why-ai-btn" onclick="alert('Prognosis AI helps you discover your strengths and future-ready skills using advanced AI analysis. Get personalized insights to guide your learning and career!')">Why use this AI?</button>
+</div>
+
+<section class="hero-section">
+<div class="glass-card">
+<div class="ai-graphic">
+       
+<svg width="140" height="140" viewBox="0 0 140 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+<!-- Outer glow -->
+<circle cx="70" cy="70" r="65" fill="url(#glow)" opacity="0.3"/>
+          
+<path d="M35 45 Q35 35 45 35 Q55 35 60 40 Q65 35 75 35 Q85 35 95 45 Q95 55 90 65 Q95 75 95 85 Q85 95 75 95 Q65 95 60 90 Q55 95 45 95 Q35 95 35 85 Q35 75 40 65 Q35 55 35 45 Z" 
+fill="url(#brainGradient)" stroke="url(#strokeGradient)" stroke-width="2"/>
+          
+          
+<path d="M50 50 Q60 45 70 50 Q80 45 90 50" stroke="url(#neuralGradient)" stroke-width="2" fill="none" opacity="0.8"/>
+<path d="M50 60 Q60 55 70 60 Q80 55 90 60" stroke="url(#neuralGradient)" stroke-width="2" fill="none" opacity="0.6"/>
+<path d="M50 70 Q60 65 70 70 Q80 65 90 70" stroke="url(#neuralGradient)" stroke-width="2" fill="none" opacity="0.8"/>
+<path d="M50 80 Q60 75 70 80 Q80 75 90 80" stroke="url(#neuralGradient)" stroke-width="2" fill="none" opacity="0.6"/>
+          
+          
+<circle cx="45" cy="55" r="3" fill="url(#nodeGradient)"/>
+<circle cx="95" cy="55" r="3" fill="url(#nodeGradient)"/>
+<circle cx="45" cy="75" r="3" fill="url(#nodeGradient)"/>
+<circle cx="95" cy="75" r="3" fill="url(#nodeGradient)"/>
+          
+          
+<circle cx="70" cy="70" r="8" fill="url(#cpuGradient)" opacity="0.9"/>
+          
+         
+<defs>
+<radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
+<stop offset="0%" stop-color="#667eea"/>
+<stop offset="100%" stop-color="transparent"/>
+</radialGradient>
+<linearGradient id="brainGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+<stop offset="0%" stop-color="#667eea"/>
+<stop offset="50%" stop-color="#764ba2"/>
+<stop offset="100%" stop-color="#f093fb"/>
+</linearGradient>
+<linearGradient id="strokeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+<stop offset="0%" stop-color="#ffffff"/>
+<stop offset="100%" stop-color="#a5b4fc"/>
+</linearGradient>
+<linearGradient id="neuralGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+<stop offset="0%" stop-color="#f093fb"/>
+<stop offset="50%" stop-color="#667eea"/>
+<stop offset="100%" stop-color="#764ba2"/>
+</linearGradient>
+<radialGradient id="nodeGradient" cx="0.5" cy="0.5" r="0.5">
+<stop offset="0%" stop-color="#ffffff"/>
+<stop offset="100%" stop-color="#667eea"/>
+</radialGradient>
+<radialGradient id="cpuGradient" cx="0.5" cy="0.5" r="0.5">
+<stop offset="0%" stop-color="#ffffff"/>
+<stop offset="100%" stop-color="#f093fb"/>
+</radialGradient>
+</defs>
+</svg>
+</div>
+<h1 class="hero-title">Welcome to Prognosis AI</h1>
+<p class="hero-tagline">Discover your hidden strengths and future-ready skills with the power of AI.</p>
+<a href="sem5.html" class="predict-btn">Predict My Skill</a>
+</div>
+</section>
+<div class="footer">
+&copy; 2025 Prognosis AI &mdash; Empowering Your Future
+</div>
+</body>
+</html>
