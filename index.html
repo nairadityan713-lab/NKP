@@ -435,7 +435,7 @@
     </div>
 
     <!-- Background audio: autoplay unmuted when homepage is visited -->
-    <audio id="backgroundMusic" loop autoplay style="position: fixed; bottom: 20px; right: 20px; z-index: 1000;">
+    <audio id="backgroundMusic" loop style="position: fixed; bottom: 20px; right: 20px; z-index: 1000;">
         <source src="assets/audio/background-home.mpeg" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
@@ -446,19 +446,61 @@
         </button>
     </div>
 
-    <!-- Add JavaScript for audio control -->
+    <!-- Add JavaScript for audio control and autoplay -->
     <script>
         const audio = document.getElementById('backgroundMusic');
+        
+        // Set volume to 50%
+        audio.volume = 0.5;
+        
+        // Function to attempt autoplay
+        function attemptAutoplay() {
+            const playPromise = audio.play();
+            
+            if (playPromise !== undefined) {
+                playPromise
+                    .then(() => {
+                        // Autoplay started successfully
+                        console.log('Audio autoplay started');
+                    })
+                    .catch(error => {
+                        // Autoplay was prevented by browser
+                        console.log('Autoplay prevented:', error);
+                        // Try to play on first user interaction
+                        const enableAudio = () => {
+                            audio.play().catch(err => console.log('Play failed:', err));
+                            document.removeEventListener('click', enableAudio);
+                            document.removeEventListener('touchstart', enableAudio);
+                            document.removeEventListener('keydown', enableAudio);
+                        };
+                        document.addEventListener('click', enableAudio, { once: true });
+                        document.addEventListener('touchstart', enableAudio, { once: true });
+                        document.addEventListener('keydown', enableAudio, { once: true });
+                    });
+            }
+        }
+        
+        // Attempt autoplay when page loads
+        window.addEventListener('DOMContentLoaded', attemptAutoplay);
+        
+        // Also try when window is fully loaded
+        window.addEventListener('load', () => {
+            if (audio.paused) {
+                attemptAutoplay();
+            }
+        });
+        
+        // Toggle music function
         function toggleMusic() {
             if (audio.paused) {
-                audio.play();
+                audio.play().catch(err => {
+                    console.log('Play failed:', err);
+                    alert('Please interact with the page first to enable audio playback.');
+                });
             } else {
                 audio.pause();
             }
         }
-        
-        // Add volume control
-        audio.volume = 0.5; // Set volume to 50%
     </script>
 
     <header>
