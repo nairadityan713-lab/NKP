@@ -1025,236 +1025,124 @@
             }
         }
 
-        /* Special Alliances Section Styles - Redesigned */
+        /* Special Alliances Section Styles */
         .special-alliances-section {
-            background: linear-gradient(135deg, rgba(255, 247, 241, 0.98), rgba(255, 240, 243, 0.95));
-            border: 5px solid #d4a373;
-            padding: 50px 30px;
-            margin: 50px auto;
-            border-radius: 32px;
+            background: var(--frost);
+            border: 1px solid rgba(214, 158, 102, 0.35);
+            padding: 40px 20px;
+            margin: 40px auto;
+            border-radius: 26px;
             text-align: center;
-            width: 85%;
-            max-width: 1400px;
-            box-shadow: 0 40px 100px rgba(36, 16, 24, 0.2), inset 0 2px 20px rgba(255, 255, 255, 0.5), 0 0 0 2px rgba(212, 163, 115, 0.3);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .special-alliances-section::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(212, 163, 115, 0.08) 0%, transparent 70%);
-            animation: rotate 20s linear infinite;
-            pointer-events: none;
-        }
-
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+            width: 80%;
+            max-width: 1200px;
+            box-shadow: 0 35px 85px rgba(36, 16, 24, 0.15);
         }
 
         .special-alliances-title {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 42px;
-            letter-spacing: 0.4em;
+            font-size: 34px;
+            letter-spacing: 0.35em;
             text-transform: uppercase;
-            color: #b8865b;
-            margin-bottom: 50px;
-            position: relative;
-            z-index: 1;
-            text-shadow: 2px 2px 8px rgba(184, 134, 91, 0.2), 0 0 20px rgba(212, 163, 115, 0.3);
+            color: var(--text-main);
+            margin-bottom: 30px;
         }
 
         .special-alliances-title::after {
             content: '';
             display: block;
-            width: 120px;
-            height: 5px;
-            margin: 20px auto 0;
-            background: linear-gradient(90deg, transparent, #d4a373, #b8865b, #d4a373, transparent);
+            width: 80px;
+            height: 4px;
+            margin: 15px auto 0;
+            background: linear-gradient(120deg, var(--accent-soft), #ffe7b0);
             border-radius: 999px;
-            box-shadow: 0 2px 10px rgba(212, 163, 115, 0.5);
         }
 
         .special-alliances-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 40px;
-            padding: 30px 20px;
-            position: relative;
-            z-index: 1;
+            display: flex;
+            justify-content: center;
+            align-items: stretch;
+            flex-wrap: wrap;
+            gap: 45px;
+            padding: 20px;
         }
 
         .special-alliances-item {
             position: relative;
-            background: linear-gradient(145deg, rgba(255, 250, 248, 0.95), rgba(255, 245, 242, 0.9));
-            border-radius: 28px;
-            padding: 25px;
-            box-shadow: 
-                0 20px 60px rgba(36, 16, 24, 0.15),
-                0 8px 25px rgba(212, 163, 115, 0.15),
-                inset 0 1px 0 rgba(255, 255, 255, 0.8);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            border: 4px solid #d4a373;
-            overflow: hidden;
+            width: 230px;
+            height: 280px;
+            padding: 18px;
+            border-radius: 32px;
+            background: linear-gradient(135deg, rgba(210, 71, 98, 0.35), rgba(246, 182, 106, 0.35));
+            box-shadow: 0 25px 55px rgba(36, 16, 24, 0.25);
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
         }
 
         .special-alliances-item::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 5px;
-            background: linear-gradient(90deg, #b8865b, #d4a373, #b8865b);
-            transform: scaleX(0);
-            transition: transform 0.4s ease;
-        }
-
-        .special-alliances-item:hover::before {
-            transform: scaleX(1);
+            inset: 4px;
+            border-radius: 28px;
+            background: rgba(255, 247, 241, 0.92);
+            border: 1px solid rgba(246, 182, 106, 0.4);
+            box-shadow: inset 0 0 25px rgba(210, 71, 98, 0.08);
+            z-index: 0;
         }
 
         .special-alliances-item:hover {
-            transform: translateY(-15px) scale(1.02);
-            box-shadow: 
-                0 30px 80px rgba(36, 16, 24, 0.25),
-                0 15px 40px rgba(212, 163, 115, 0.3),
-                inset 0 1px 0 rgba(255, 255, 255, 0.9),
-                0 0 0 2px rgba(212, 163, 115, 0.4);
-            border-color: #b8865b;
+            transform: translateY(-12px);
+            box-shadow: 0 35px 65px rgba(36, 16, 24, 0.35);
+        }
+
+        .special-alliances-item > * {
+            position: relative;
+            z-index: 1;
         }
 
         .alliance-image-container {
             width: 100%;
-            height: 320px;
-            border-radius: 20px;
+            height: 200px;
+            border-radius: 24px;
             overflow: hidden;
-            margin-bottom: 20px;
-            position: relative;
-            box-shadow: 
-                0 15px 35px rgba(36, 16, 24, 0.2),
-                inset 0 0 0 4px #d4a373;
-            background: linear-gradient(135deg, rgba(212, 163, 115, 0.2), rgba(184, 134, 91, 0.2));
-            border: 3px solid #d4a373;
-        }
-
-        .alliance-image-container::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border-radius: 20px;
-            background: linear-gradient(135deg, transparent 0%, rgba(212, 163, 115, 0.15) 100%);
-            opacity: 0;
-            transition: opacity 0.4s ease;
-            pointer-events: none;
-        }
-
-        .special-alliances-item:hover .alliance-image-container::after {
-            opacity: 1;
+            padding: 6px;
+            background: linear-gradient(135deg, rgba(246, 182, 106, 0.65), rgba(210, 71, 98, 0.65));
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .alliance-image-container img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            display: block;
-            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            filter: brightness(1) contrast(1);
+            border-radius: 18px;
+            box-shadow: 0 12px 25px rgba(36, 16, 24, 0.25);
+            transition: transform 0.4s ease;
         }
 
         .special-alliances-item:hover .alliance-image-container img {
-            transform: scale(1.1);
-            filter: brightness(1.05) contrast(1.05);
+            transform: scale(1.05);
         }
 
         .alliance-name {
+            margin-top: 14px;
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.8em;
-            font-weight: 600;
-            letter-spacing: 0.15em;
+            font-size: 1.2em;
+            letter-spacing: 0.2em;
             text-transform: uppercase;
-            color: #b8865b;
-            margin-top: 15px;
-            padding: 12px 20px;
-            background: linear-gradient(135deg, rgba(212, 163, 115, 0.15), rgba(184, 134, 91, 0.15));
-            border-radius: 12px;
-            border: 3px solid #d4a373;
-            position: relative;
-            transition: all 0.3s ease;
-            text-shadow: 1px 1px 3px rgba(184, 134, 91, 0.2), 0 0 10px rgba(212, 163, 115, 0.3);
-        }
-
-        .alliance-name::before {
-            content: '✨';
-            position: absolute;
-            left: -15px;
-            top: 50%;
-            transform: translateY(-50%);
-            opacity: 0;
-            transition: all 0.3s ease;
-            font-size: 0.8em;
-        }
-
-        .alliance-name::after {
-            content: '✨';
-            position: absolute;
-            right: -15px;
-            top: 50%;
-            transform: translateY(-50%);
-            opacity: 0;
-            transition: all 0.3s ease;
-            font-size: 0.8em;
-        }
-
-        .special-alliances-item:hover .alliance-name {
-            background: linear-gradient(135deg, rgba(212, 163, 115, 0.25), rgba(184, 134, 91, 0.25));
-            border-color: #b8865b;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(212, 163, 115, 0.3), 0 0 20px rgba(212, 163, 115, 0.2);
-            color: #9d6f4a;
-        }
-
-        .special-alliances-item:hover .alliance-name::before,
-        .special-alliances-item:hover .alliance-name::after {
-            opacity: 1;
-            transform: translateY(-50%) scale(1.2);
+            color: var(--text-main);
         }
 
         @media (max-width: 768px) {
             .special-alliances-section {
-                width: 95%;
-                padding: 35px 20px;
+                width: 90%;
+                padding: 30px 15px;
             }
 
-            .special-alliances-title {
-                font-size: 32px;
-                letter-spacing: 0.25em;
-                margin-bottom: 35px;
-            }
-
-            .special-alliances-container {
-                grid-template-columns: 1fr;
-                gap: 30px;
-                padding: 20px 10px;
-            }
-
-            .alliance-image-container {
-                height: 280px;
-            }
-
-            .alliance-name {
-                font-size: 1.5em;
-            }
-        }
-
-        @media (min-width: 769px) and (max-width: 1024px) {
-            .special-alliances-container {
-                grid-template-columns: repeat(2, 1fr);
+            .special-alliances-item {
+                width: 150px;
+                height: 150px;
             }
         }
 
@@ -1605,7 +1493,7 @@
 <header>
     <div class="header-content">
         <div class="logo-container">
-            <img src="assets/images/about-us.jpeg" alt="NAANO KI PALTAN Logo">
+            <img src="assets/images/logo.jpeg" alt="NAANO KI PALTAN Logo">
         </div>
     <h1>NAANO KI PALTAN</h1>
     </div>
