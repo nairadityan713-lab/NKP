@@ -94,6 +94,42 @@
             color: var(--text-main);
             padding-bottom: 60px;
             letter-spacing: 0.02em;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Animated floating particles background */
+        .floating-particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(210, 74, 94, 0.15), rgba(246, 182, 106, 0.1));
+            animation: float 20s infinite ease-in-out;
+            filter: blur(1px);
+        }
+
+        .particle:nth-child(1) { width: 80px; height: 80px; left: 10%; animation-delay: 0s; animation-duration: 25s; }
+        .particle:nth-child(2) { width: 120px; height: 120px; left: 20%; animation-delay: 2s; animation-duration: 30s; }
+        .particle:nth-child(3) { width: 60px; height: 60px; left: 30%; animation-delay: 4s; animation-duration: 22s; }
+        .particle:nth-child(4) { width: 100px; height: 100px; left: 50%; animation-delay: 1s; animation-duration: 28s; }
+        .particle:nth-child(5) { width: 90px; height: 90px; left: 70%; animation-delay: 3s; animation-duration: 26s; }
+        .particle:nth-child(6) { width: 70px; height: 70px; left: 85%; animation-delay: 5s; animation-duration: 24s; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) translateX(0) scale(1); opacity: 0.3; }
+            25% { transform: translateY(-100px) translateX(50px) scale(1.1); opacity: 0.5; }
+            50% { transform: translateY(-200px) translateX(-30px) scale(0.9); opacity: 0.4; }
+            75% { transform: translateY(-150px) translateX(40px) scale(1.05); opacity: 0.5; }
         }
 
         header {
@@ -104,6 +140,20 @@
             text-align: center;
             box-shadow: var(--shadow-lg);
             backdrop-filter: blur(18px);
+            position: relative;
+            z-index: 100;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         h1 {
@@ -117,6 +167,14 @@
             -webkit-background-clip: text;
             color: transparent;
             margin: 10px 0 0;
+            position: relative;
+            animation: shimmer 3s ease-in-out infinite;
+            filter: drop-shadow(0 4px 12px rgba(210, 74, 94, 0.2));
+        }
+
+        @keyframes shimmer {
+            0%, 100% { filter: drop-shadow(0 4px 12px rgba(210, 74, 94, 0.2)); }
+            50% { filter: drop-shadow(0 6px 20px rgba(246, 182, 106, 0.3)); }
         }
 
         nav {
@@ -131,6 +189,12 @@
             justify-content: center;
             align-items: center;
             box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            box-shadow: 0 8px 32px rgba(143, 76, 72, 0.25);
+            backdrop-filter: blur(24px);
         }
 
         nav a {
@@ -154,8 +218,27 @@
             background: linear-gradient(120deg, var(--accent), var(--accent-soft));
             color: #fff;
             border-color: transparent;
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(33, 46, 73, 0.25);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 12px 28px rgba(210, 74, 94, 0.35);
+            filter: brightness(1.1);
+        }
+
+        nav a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 999px;
+            background: linear-gradient(120deg, var(--accent), var(--accent-soft));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+
+        nav a {
+            position: relative;
         }
 
         /* Refreshed content styling — same aesthetic, different layout */
@@ -176,6 +259,15 @@
             /* magazine columns for layout */
             column-count: 2;
             column-gap: 28px;
+            position: relative;
+            z-index: 10;
+            animation: fadeInUp 1.4s ease-out 0.5s both;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .content:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 24px 60px rgba(210, 74, 94, 0.15), inset 0 2px 8px rgba(255,255,255,0.7);
         }
 
         /* Keep the heading spanning both columns with a metallic rose-gold title */
@@ -246,6 +338,42 @@
             overflow: hidden;
             border: 1px solid var(--outline);
             background: var(--panel-strong);
+            animation: fadeInUp 1.2s ease-out 0.3s both;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .video-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(210, 74, 94, 0.1), rgba(246, 182, 106, 0.1));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .video-container:hover {
+            transform: translateY(-8px) scale(1.01);
+            box-shadow: 0 32px 70px rgba(210, 74, 94, 0.25);
+        }
+
+        .video-container:hover::before {
+            opacity: 1;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         video {
@@ -253,6 +381,13 @@
             height: auto;
             display: block;
             border-radius: 22px;
+            position: relative;
+            z-index: 0;
+            transition: transform 0.5s ease;
+        }
+
+        .video-container:hover video {
+            transform: scale(1.02);
         }
 
         /* New styles for the portrait photo slideshow */
@@ -335,6 +470,22 @@
             box-shadow: 0 -12px 30px rgba(33, 46, 73, 0.12);
             border-top: 1px solid var(--outline);
             backdrop-filter: blur(18px);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        footer:hover {
+            box-shadow: 0 -16px 40px rgba(210, 74, 94, 0.2);
+        }
+
+        footer p {
+            margin: 0;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
         }
 
         @media screen and (max-width: 768px) {
@@ -382,13 +533,38 @@
             border-radius: 50%;
             object-fit: cover;
             box-shadow: var(--shadow-md);
-            border: 2px solid var(--accent);
-            transition: transform 0.7s ease;
+            border: 3px solid var(--accent);
+            transition: transform 0.7s ease, box-shadow 0.7s ease, border-color 0.7s ease;
+            position: relative;
+            animation: logoFloat 3s ease-in-out infinite;
+        }
+
+        .logo::before {
+            content: '';
+            position: absolute;
+            top: -3px;
+            left: -3px;
+            right: -3px;
+            bottom: -3px;
+            border-radius: 50%;
+            border: 2px solid var(--accent-soft);
+            opacity: 0;
+            transition: opacity 0.7s ease;
         }
 
         .logo:hover {
-            transform: scale(1.03) rotate(6deg);
-            box-shadow: 0 25px 40px rgba(33, 46, 73, 0.2);
+            transform: scale(1.08) rotate(12deg);
+            box-shadow: 0 30px 50px rgba(210, 74, 94, 0.4);
+            border-color: var(--accent-soft);
+        }
+
+        .logo:hover::before {
+            opacity: 1;
+        }
+
+        @keyframes logoFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
         }
 
         /* Slideshow image with smooth fade transition */
@@ -417,9 +593,67 @@
                 transform: scale(1.12);
             }
         }
+
+        /* Smooth scroll behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Enhanced music toggle button */
+        .music-toggle-container {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 12px 16px;
+            border-radius: 16px;
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(214, 158, 102, 0.4);
+            box-shadow: 0 18px 35px rgba(143, 76, 72, 0.16);
+            transition: all 0.3s ease;
+            animation: fadeInRight 1s ease-out 0.8s both;
+        }
+
+        .music-toggle-container:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 24px 45px rgba(210, 74, 94, 0.25);
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Scroll reveal animation */
+        @media (prefers-reduced-motion: no-preference) {
+            .content p {
+                animation: fadeInUp 1s ease-out both;
+            }
+            .content p:nth-child(1) { animation-delay: 0.1s; }
+            .content p:nth-child(2) { animation-delay: 0.3s; }
+            .content p:nth-child(3) { animation-delay: 0.5s; }
+        }
     </style>
 </head>
 <body>
+    
+    <!-- Floating particles background -->
+    <div class="floating-particles" aria-hidden="true">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
     
     <div class="snowflakes" aria-hidden="true">
         <span class="snowflake">❆</span>
@@ -440,8 +674,8 @@
         Your browser does not support the audio element.
     </audio>
 
-    <div style="position: fixed; bottom: 80px; right: 20px; z-index: 1000; background: rgba(255, 255, 255, 0.2); padding: 12px 16px; border-radius: 16px; backdrop-filter: blur(12px); border: 1px solid rgba(214, 158, 102, 0.4); box-shadow: 0 18px 35px rgba(143, 76, 72, 0.16);">
-        <button onclick="toggleMusic()" style="background: linear-gradient(120deg, #d24762, #f6b66a); color: #fff; padding: 10px 20px; border: none; border-radius: 999px; cursor: pointer; transition: all 0.3s ease; font-weight: 600; letter-spacing: 0.1em;">
+    <div class="music-toggle-container">
+        <button onclick="toggleMusic()" style="background: linear-gradient(120deg, #d24762, #f6b66a); color: #fff; padding: 10px 20px; border: none; border-radius: 999px; cursor: pointer; transition: all 0.3s ease; font-weight: 600; letter-spacing: 0.1em; box-shadow: 0 4px 15px rgba(210, 74, 94, 0.3);">
             Toggle Music
         </button>
     </div>
@@ -501,6 +735,16 @@
                 audio.pause();
             }
         }
+
+        // Nav scroll effect
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
     </script>
 
     <header>
