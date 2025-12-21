@@ -67,26 +67,6 @@
         .snowflake:nth-child(9){ left:84%; font-size:20px; animation-duration:16s; animation-delay:0.9s; }
         .snowflake:nth-child(10){ left:92%; font-size:12px; animation-duration:10s; animation-delay:2.5s; }
 
-        /* decorative garland above header */
-        .garland { position: fixed; top: 6px; left: 0; right: 0; height: 54px; display:flex; justify-content:center; gap:12px; align-items:flex-start; pointer-events:none; z-index:1200; }
-        .garland .bulb {
-            width:14px; height:14px; border-radius:50%;
-            box-shadow: 0 6px 14px rgba(0,0,0,0.18);
-            border: 2px solid rgba(255,255,255,0.35);
-        }
-        .garland .bulb:nth-child(odd){ background: var(--accent); transform: translateY(6px); }
-        .garland .bulb:nth-child(even){ background: var(--accent-soft); transform: translateY(-4px); }
-
-        /* small ribbon on top-right */
-        .corner-ribbon {
-            position: fixed; top: 12px; right: 12px; z-index:1300;
-            background: linear-gradient(120deg, rgba(210,74,94,1), rgba(246,182,106,0.95));
-            color: #fff; padding: 8px 12px; border-radius: 8px;
-            font-weight:700; letter-spacing:0.06em; box-shadow: var(--shadow-md);
-            transform: rotate(6deg);
-            pointer-events: none;
-        }
-        .corner-ribbon small { display:block; font-size:0.7em; opacity:0.95; }
         /* end decorations */
 
         body {
@@ -753,7 +733,7 @@
     <header>
         <!-- Updated header with logo -->
         <div class="header-container">
-            <img src="assets/images/logo.jpeg" alt="Naano Logo" class="logo">
+            <img src="assets/images/logo.png" alt="Naano Logo" class="logo">
             <h1 id="heading">NAANO KI PALTAN</h1>
         </div>
     </header>
