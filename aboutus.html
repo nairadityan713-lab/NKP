@@ -1510,16 +1510,15 @@
     <!-- Add JavaScript for audio control -->
     <script>
         const audio = document.getElementById('backgroundMusic');
+        let userStoppedAudio = false;
         function toggleMusic() {
-            if (audio.paused) {
-                audio.play();
-            } else {
-                audio.pause();
-            }
+            audio.pause();
+            audio.currentTime = 0;
+            userStoppedAudio = true;
         }
         audio.volume = 0.5;
         document.addEventListener('DOMContentLoaded', function(){ audio.play().catch(function(){}); });
-        document.addEventListener('click', function(){ if(audio.paused){ audio.play().catch(function(){}); } });
+        document.addEventListener('click', function(){ if(!userStoppedAudio && audio.paused){ audio.play().catch(function(){}); } });
     </script>
 
 <header>
