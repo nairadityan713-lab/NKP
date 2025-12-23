@@ -644,6 +644,38 @@
             50% { opacity: 0.5; transform: scale(1.5); }
         }
 
+        .music-toggle-container {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 12px 16px;
+            border-radius: 16px;
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(214, 158, 102, 0.4);
+            box-shadow: 0 18px 35px rgba(143, 76, 72, 0.16);
+            transition: all 0.3s ease;
+            animation: fadeInRight 1s ease-out 0.8s both;
+        }
+
+        .music-toggle-container:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 24px 45px rgba(210, 74, 94, 0.25);
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
         /* Sana's Sweet Logo */
         .sweet-logo {
             position: relative;
@@ -1469,8 +1501,8 @@
         Your browser does not support the audio element.
     </audio>
 
-    <div style="position: fixed; bottom: 80px; right: 20px; z-index: 1000; background: rgba(255, 255, 255, 0.2); padding: 10px; border-radius: 10px; backdrop-filter: blur(5px);">
-        <button onclick="toggleMusic()" style="background: linear-gradient(to right, #4169E1, #0000FF); color: white; padding: 8px 15px; border: none; border-radius: 5px; cursor: pointer; transition: all 0.3s ease;">
+    <div class="music-toggle-container">
+        <button onclick="toggleMusic()" style="background: linear-gradient(120deg, #d24762, #f6b66a); color: #fff; padding: 10px 20px; border: none; border-radius: 999px; cursor: pointer; transition: all 0.3s ease; font-weight: 600; letter-spacing: 0.1em; box-shadow: 0 4px 15px rgba(210, 74, 94, 0.3);">
             Toggle Music
         </button>
     </div>
@@ -1499,7 +1531,7 @@
         </div>
     </header>
 <nav>
-    <a href="chaddibaddi.html">Home</a>
+    <a href="index.html">Home</a>
     <a href="images.html">Gallery</a>
     <a href="rules and regulation.html">Rules</a>
     <a href="bts.html">Behind the scene</a>
