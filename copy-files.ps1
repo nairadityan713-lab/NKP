@@ -74,7 +74,7 @@ Copy-FileSafe "$downloadsPath\WhatsApp Image 2025-12-07 at 10.58.55 PM (2).jpeg"
 Copy-FileSafe "$downloadsPath\WhatsApp Image 2025-12-07 at 10.58.56 PM.jpeg" "$assetsPath\images\collage-4.jpeg"
 Copy-FileSafe "$downloadsPath\WhatsApp Image 2025-12-07 at 10.58.56 PM (1).jpeg" "$assetsPath\images\collage-5.jpeg"
 Copy-FileSafe "$downloadsPath\WhatsApp Image 2025-12-12 at 12.20.29 AM.jpeg" "$assetsPath\images\collage-6.jpeg"
-Copy-FileSafe "$downloadsPath\WhatsApp Image 2025-12-07 at 4.36.07 AM.jpeg" "$assetsPath\images\collage-7.jpeg"
+Copy-FileSafe "$downloadsPath\WhatsApp Image 2025-12-18 at 12.05.52 AM.jpeg" "$assetsPath\images\collage-7.jpeg"
 Copy-FileSafe "$downloadsPath\WhatsApp Image 2025-12-12 at 12.20.23 AM.jpeg" "$assetsPath\images\collage-8.jpeg"
 Copy-FileSafe "$downloadsPath\WhatsApp Image 2025-12-07 at 10.58.55 PM.jpeg" "$assetsPath\images\collage-9.jpeg"
 
