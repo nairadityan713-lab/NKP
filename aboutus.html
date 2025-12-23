@@ -1143,12 +1143,13 @@
             align-items: center;
             justify-content: center;
             position: relative;
+            cursor: pointer;
         }
 
         .alliance-image-container img {
-            width: 100%;
-            height: calc(100% - 54px);
-            object-fit: cover;
+            max-width: 100%;
+            max-height: calc(100% - 54px);
+            object-fit: contain;
             border-radius: 18px;
             box-shadow: 0 12px 25px rgba(36, 16, 24, 0.25);
             transition: transform 0.4s ease;
@@ -1193,6 +1194,74 @@
             .alliance-image-container img {
                 height: calc(100% - 60px);
             }
+        }
+
+        .alliance-modal {
+            position: fixed;
+            inset: 0;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            background: rgba(14, 23, 32, 0.6);
+            backdrop-filter: blur(6px);
+            z-index: 2000;
+        }
+        .alliance-modal.active { display: flex; }
+        .alliance-modal-content {
+            position: relative;
+            max-width: 88vw;
+            max-height: 86vh;
+            border-radius: 22px;
+            padding: 14px;
+            background: rgba(255, 247, 241, 0.96);
+            border: 6px solid transparent;
+            box-shadow: 0 35px 85px rgba(36, 16, 24, 0.35);
+            background-image: linear-gradient(180deg, rgba(255,255,255,0.5), rgba(255,244,239,0.5));
+            border-image: linear-gradient(120deg, #d24762, #f6b66a) 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+        .alliance-modal-image {
+            max-width: 84vw;
+            max-height: 70vh;
+            object-fit: contain;
+            border-radius: 16px;
+            box-shadow: 0 24px 60px rgba(33, 46, 73, 0.25);
+        }
+        .alliance-modal-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6em;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: #241018;
+            background: linear-gradient(120deg, #d24762, #f6b66a);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 2px 12px rgba(210, 74, 94, 0.18);
+        }
+        .alliance-modal-close {
+            position: absolute;
+            top: 10px;
+            right: 14px;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: 1px solid rgba(214, 158, 102, 0.4);
+            background: linear-gradient(120deg, #d24762, #f6b66a);
+            color: #fff;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 12px 28px rgba(210, 74, 94, 0.25);
+        }
+        @media (max-width: 768px) {
+            .alliance-modal-image { max-width: 92vw; max-height: 64vh; }
+            .alliance-modal-content { max-width: 94vw; max-height: 80vh; }
         }
 
         /* Games Section Styles */
@@ -1832,10 +1901,58 @@
     </div>
 </div>
 
+<div class="alliance-modal" id="allianceModal" aria-modal="true" role="dialog">
+    <div class="alliance-modal-content">
+        <button class="alliance-modal-close" id="allianceModalClose" aria-label="Close">×</button>
+        <img class="alliance-modal-image" id="allianceModalImage" alt="">
+        <div class="alliance-modal-name" id="allianceModalName"></div>
+    </div>
+</div>
+
 
 <footer>
     <p>&copy; 2025 NAANO KI PALTAN. All rights reserved.</p>
 </footer>
+
+<script>
+    (function(){
+        const modal = document.getElementById('allianceModal');
+        const modalImg = document.getElementById('allianceModalImage');
+        const modalName = document.getElementById('allianceModalName');
+        const modalClose = document.getElementById('allianceModalClose');
+
+        function openModal(src, name) {
+            modalImg.src = src;
+            modalImg.alt = name;
+            modalName.textContent = name;
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeModal() {
+            modal.classList.remove('active');
+            modalImg.src = '';
+            modalImg.alt = '';
+            modalName.textContent = '';
+            document.body.style.overflow = '';
+        }
+
+        document.querySelectorAll('.alliance-image-container img').forEach(img => {
+            img.setAttribute('tabindex', '0');
+            img.addEventListener('click', () => openModal(img.src, img.alt));
+            img.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openModal(img.src, img.alt); }
+            });
+        });
+
+        modalClose.addEventListener('click', closeModal);
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+        });
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.classList.contains('active')) closeModal();
+        });
+    })();
+ </script>
 
 </body>
 </html>
