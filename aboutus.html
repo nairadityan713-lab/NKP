@@ -1465,7 +1465,7 @@
 </head>
 <body>
     <audio id="backgroundMusic" loop autoplay style="position: fixed; bottom: 20px; right: 20px; z-index: 1000;">
-        <source src="C:\Users\adina\Downloads\awesome_chillar.mp3" type="audio/mpeg">
+        <source src="assets/audio/awesome_chillar.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
 
@@ -1485,9 +1485,9 @@
                 audio.pause();
             }
         }
-        
-        // Add volume control
-        audio.volume = 0.5; // Set volume to 50%
+        audio.volume = 0.5;
+        document.addEventListener('DOMContentLoaded', function(){ audio.play().catch(function(){}); });
+        document.addEventListener('click', function(){ if(audio.paused){ audio.play().catch(function(){}); } });
     </script>
 
 <header>
@@ -1791,4 +1791,3 @@
 
 </body>
 </html>
-
