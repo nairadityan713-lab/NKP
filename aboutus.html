@@ -1579,6 +1579,81 @@
             font-weight: 600;
             letter-spacing: 0.1em;
         }
+        
+        .laadle-section {
+            background: var(--frost);
+            border: 1px solid rgba(214, 158, 102, 0.35);
+            padding: 40px 20px;
+            margin: 40px auto;
+            border-radius: 26px;
+            text-align: center;
+            width: 85%;
+            max-width: 1200px;
+            box-shadow: 0 35px 85px rgba(36, 16, 24, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+        .laadle-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 34px;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            background: linear-gradient(120deg, var(--accent-soft), #ffe7b0);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 24px;
+        }
+        .paw-trail {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .paw {
+            position: absolute;
+            font-size: 24px;
+            opacity: 0.18;
+            animation: pawMove 9s linear infinite;
+        }
+        .paw:nth-child(1){ left: 5%; top: 90%; animation-delay: 0s; }
+        .paw:nth-child(2){ left: 15%; top: 95%; animation-delay: 0.8s; }
+        .paw:nth-child(3){ left: 25%; top: 92%; animation-delay: 1.6s; }
+        .paw:nth-child(4){ left: 35%; top: 96%; animation-delay: 2.4s; }
+        .paw:nth-child(5){ left: 45%; top: 94%; animation-delay: 3.2s; }
+        .paw:nth-child(6){ left: 55%; top: 96%; animation-delay: 4s; }
+        .paw:nth-child(7){ left: 65%; top: 93%; animation-delay: 4.8s; }
+        .paw:nth-child(8){ left: 75%; top: 95%; animation-delay: 5.6s; }
+        .paw:nth-child(9){ left: 85%; top: 92%; animation-delay: 6.4s; }
+        @keyframes pawMove {
+            0% { transform: translateY(0) rotate(0deg); }
+            100% { transform: translateY(-120%) rotate(20deg); }
+        }
+        .laadle-videos {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        .laadle-video {
+            border-radius: 18px;
+            border: 2px solid rgba(214, 158, 102, 0.35);
+            background: rgba(255, 247, 241, 0.96);
+            box-shadow: 0 20px 45px rgba(143, 76, 72, 0.18);
+            padding: 10px;
+        }
+        .laadle-video video {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 12px;
+            display: block;
+        }
+        @media (max-width: 900px) {
+            .laadle-videos { grid-template-columns: 1fr; }
+            .laadle-video video { height: 240px; }
+        }
     </style>
 </head>
 <body>
@@ -1906,6 +1981,38 @@
         <button class="alliance-modal-close" id="allianceModalClose" aria-label="Close">×</button>
         <img class="alliance-modal-image" id="allianceModalImage" alt="">
         <div class="alliance-modal-name" id="allianceModalName"></div>
+    </div>
+</div>
+
+<div class="laadle-section">
+    <div class="laadle-title">Group Ke Laadle</div>
+    <div class="paw-trail">
+        <div class="paw">🐾</div>
+        <div class="paw">🐾</div>
+        <div class="paw">🐾</div>
+        <div class="paw">🐾</div>
+        <div class="paw">🐾</div>
+        <div class="paw">🐾</div>
+        <div class="paw">🐾</div>
+        <div class="paw">🐾</div>
+        <div class="paw">🐾</div>
+    </div>
+    <div class="laadle-videos">
+        <div class="laadle-video">
+            <video autoplay loop muted playsinline>
+                <source src="assets/video/birthday-gift.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="laadle-video">
+            <video autoplay loop muted playsinline>
+                <source src="assets/video/bts-video1.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="laadle-video">
+            <video autoplay loop muted playsinline>
+                <source src="assets/video/bts-video2.mp4" type="video/mp4">
+            </video>
+        </div>
     </div>
 </div>
 
