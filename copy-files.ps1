@@ -57,7 +57,7 @@ Copy-FileSafe "$downloadsPath\WhatsApp Video 2025-05-02 at 2.16.34 PM.mp4" "$ass
 Write-Host ""
 Write-Host "=== Copying Special Mention Images ===" -ForegroundColor Cyan
 Copy-FileSafe "$downloadsPath\WhatsApp Image 2025-12-12 at 6.04.12 PM.jpeg" "$assetsPath\images\jadhav-dada.jpeg"
-Copy-FileSafe "$downloadsPath\WhatsApp Image 2025-12-12 at 3.20.55 PM.jpeg" "$assetsPath\images\sai-radha.jpeg"
+Copy-FileSafe "$downloadsPath\WhatsApp Image 2025-12-23 at 1.38.06 PM.jpeg" "$assetsPath\images\sai-radha.jpeg"
 Copy-FileSafe "$downloadsPath\WhatsApp Image 2025-12-06 at 9.44.29 PM.jpeg" "$assetsPath\images\rachudi.jpeg"
 Copy-FileSafe "$downloadsPath\WhatsApp Image 2025-03-04 at 3.19.43 PM.jpeg" "$assetsPath\images\divijaa.jpeg"
 
