@@ -39,7 +39,6 @@ New-Item -ItemType Directory -Force -Path "$assetsPath\video" | Out-Null
 
 Write-Host "=== Copying Logo ===" -ForegroundColor Cyan
 Copy-FileSafe "$downloadsPath\WhatsApp Image 2025-03-02 at 12.21.21 AM.jpeg" "$assetsPath\images\logo.jpeg"
-Copy-FileSafe "$downloadsPath\logo.png" "$assetsPath\images\logo.png"
 
 Write-Host ""
 Write-Host "=== Copying Audio Files ===" -ForegroundColor Cyan
@@ -49,7 +48,7 @@ Copy-FileSafe "$downloadsPath\awesome_chillar.mp3" "$assetsPath\audio\awesome_ch
 
 Write-Host ""
 Write-Host "=== Copying Video Files ===" -ForegroundColor Cyan
-Copy-FileSafe "$downloadsPath\WhatsApp Video 2025-03-01 at 3.57.21 PM.mp4" "$assetsPath\video\hero-video.mp4"
+Copy-FileSafe "$downloadsPath\WhatsApp Video 2025-12-19 at 12.09.45 AM.mp4" "$assetsPath\video\hero-video.mp4"
 Copy-FileSafe "$downloadsPath\WhatsApp Video 2025-12-01 at 1.40.16 PM.mp4" "$assetsPath\video\birthday-gift.mp4"
 Copy-FileSafe "$downloadsPath\WhatsApp Video 2025-05-02 at 2.10.31 PM.mp4" "$assetsPath\video\bts-video1.mp4"
 Copy-FileSafe "$downloadsPath\WhatsApp Video 2025-05-02 at 2.16.34 PM.mp4" "$assetsPath\video\bts-video2.mp4"
@@ -57,8 +56,7 @@ Copy-FileSafe "$downloadsPath\WhatsApp Video 2025-05-02 at 2.16.34 PM.mp4" "$ass
 Write-Host ""
 Write-Host "=== Copying Special Mention Images ===" -ForegroundColor Cyan
 Copy-FileSafe "$downloadsPath\WhatsApp Image 2025-12-12 at 6.04.12 PM.jpeg" "$assetsPath\images\jadhav-dada.jpeg"
-Copy-FileSafe "$downloadsPath\WhatsApp Image 2025-12-23 at 1.38.06 PM.jpeg" "$assetsPath\images\sai-radha.jpeg"
-Copy-FileSafe "$downloadsPath\WhatsApp Image 2025-12-06 at 9.44.29 PM.jpeg" "$assetsPath\images\rachudi.jpeg"
+Copy-FileSafe "$downloadsPath\WhatsApp Image 2025-12-12 at 3.20.55 PM.jpeg" "$assetsPath\images\sai-radha.jpeg"
 Copy-FileSafe "$downloadsPath\WhatsApp Image 2025-03-04 at 3.19.43 PM.jpeg" "$assetsPath\images\divijaa.jpeg"
 
 Write-Host ""
