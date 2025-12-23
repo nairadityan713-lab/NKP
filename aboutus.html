@@ -1598,10 +1598,7 @@
             font-size: 34px;
             letter-spacing: 0.35em;
             text-transform: uppercase;
-            background: linear-gradient(120deg, var(--accent-soft), #ffe7b0);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+            color: #000;
             margin-bottom: 24px;
         }
         .paw-trail {
@@ -1629,30 +1626,65 @@
             0% { transform: translateY(0) rotate(0deg); }
             100% { transform: translateY(-120%) rotate(20deg); }
         }
-        .laadle-videos {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
+        .laadle-container {
+            display: flex;
+            justify-content: center;
+            align-items: stretch;
+            flex-wrap: wrap;
+            gap: 28px;
+            padding: 12px;
             position: relative;
             z-index: 1;
         }
-        .laadle-video {
-            border-radius: 18px;
-            border: 2px solid rgba(214, 158, 102, 0.35);
-            background: rgba(255, 247, 241, 0.96);
-            box-shadow: 0 20px 45px rgba(143, 76, 72, 0.18);
-            padding: 10px;
+        .laadle-item {
+            position: relative;
+            width: 320px;
+            height: 360px;
+            padding: 16px;
+            border-radius: 32px;
+            background: linear-gradient(135deg, rgba(210, 71, 98, 0.35), rgba(246, 182, 106, 0.35));
+            box-shadow: 0 25px 55px rgba(36, 16, 24, 0.25);
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
         }
-        .laadle-video video {
+        .laadle-item::before {
+            content: '';
+            position: absolute;
+            inset: 4px;
+            border-radius: 28px;
+            background: rgba(255, 247, 241, 0.92);
+            border: 1px solid rgba(246, 182, 106, 0.4);
+            box-shadow: inset 0 0 25px rgba(210, 71, 98, 0.08);
+            z-index: 0;
+        }
+        .laadle-item > * { position: relative; z-index: 1; }
+        .laadle-item:hover { transform: translateY(-12px); box-shadow: 0 35px 65px rgba(36, 16, 24, 0.35); }
+        .laadle-media-container {
             width: 100%;
-            height: 220px;
-            object-fit: cover;
-            border-radius: 12px;
-            display: block;
+            height: 100%;
+            border-radius: 24px;
+            overflow: hidden;
+            padding: 8px;
+            background: linear-gradient(135deg, rgba(246, 182, 106, 0.65), rgba(210, 71, 98, 0.65));
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
         }
+        .laadle-media-container video {
+            width: 100%;
+            height: calc(100% - 54px);
+            object-fit: cover;
+            border-radius: 18px;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+        .laadle-item:hover .laadle-media-container video { transform: scale(1.02); }
         @media (max-width: 900px) {
-            .laadle-videos { grid-template-columns: 1fr; }
-            .laadle-video video { height: 240px; }
+            .laadle-container { gap: 22px; }
+            .laadle-item { width: 100%; max-width: 360px; height: 420px; }
+            .laadle-media-container video { height: calc(100% - 60px); }
         }
     </style>
 </head>
@@ -1997,21 +2029,30 @@
         <div class="paw">🐾</div>
         <div class="paw">🐾</div>
     </div>
-    <div class="laadle-videos">
-        <div class="laadle-video">
-            <video autoplay loop muted playsinline>
-                <source src="assets/video/laadle-1.mp4?v=20251223" type="video/mp4">
-            </video>
+    <div class="laadle-container">
+        <div class="laadle-item">
+            <div class="laadle-media-container">
+                <video autoplay loop muted playsinline>
+                    <source src="assets/video/laadle-1.mp4?v=20251223" type="video/mp4">
+                </video>
+                <div class="alliance-label">Buttery</div>
+            </div>
         </div>
-        <div class="laadle-video">
-            <video autoplay loop muted playsinline>
-                <source src="assets/video/laadle-2.mp4?v=20251223" type="video/mp4">
-            </video>
+        <div class="laadle-item">
+            <div class="laadle-media-container">
+                <video autoplay loop muted playsinline>
+                    <source src="assets/video/laadle-2.mp4?v=20251223" type="video/mp4">
+                </video>
+                <div class="alliance-label">Donteyaa</div>
+            </div>
         </div>
-        <div class="laadle-video">
-            <video autoplay loop muted playsinline>
-                <source src="assets/video/laadle-3.mp4?v=20251223" type="video/mp4">
-            </video>
+        <div class="laadle-item">
+            <div class="laadle-media-container">
+                <video autoplay loop muted playsinline>
+                    <source src="assets/video/laadle-3.mp4?v=20251223" type="video/mp4">
+                </video>
+                <div class="alliance-label">Cookiyaa</div>
+            </div>
         </div>
     </div>
 </div>
