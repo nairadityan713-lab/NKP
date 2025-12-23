@@ -39,6 +39,7 @@ New-Item -ItemType Directory -Force -Path "$assetsPath\video" | Out-Null
 
 Write-Host "=== Copying Logo ===" -ForegroundColor Cyan
 Copy-FileSafe "$downloadsPath\WhatsApp Image 2025-03-02 at 12.21.21 AM.jpeg" "$assetsPath\images\logo.jpeg"
+Copy-FileSafe "$downloadsPath\logo.png" "$assetsPath\images\logo.png"
 
 Write-Host ""
 Write-Host "=== Copying Audio Files ===" -ForegroundColor Cyan
