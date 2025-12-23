@@ -51,7 +51,7 @@ Write-Host "=== Copying Video Files ===" -ForegroundColor Cyan
 Copy-FileSafe "$downloadsPath\WhatsApp Video 2025-12-19 at 12.09.45 AM.mp4" "$assetsPath\video\hero-video.mp4"
 Copy-FileSafe "$downloadsPath\WhatsApp Video 2025-12-01 at 1.40.16 PM.mp4" "$assetsPath\video\birthday-gift.mp4"
 Copy-FileSafe "$downloadsPath\WhatsApp Video 2025-05-02 at 2.10.31 PM.mp4" "$assetsPath\video\bts-video1.mp4"
-Copy-FileSafe "$downloadsPath\WhatsApp Video 2025-05-02 at 2.16.34 PM.mp4" "$assetsPath\video\bts-video2.mp4"
+Copy-FileSafe "$downloadsPath\WhatsApp Video 2025-12-17 at 2.04.50 PM.mp4" "$assetsPath\video\bts-video2.mp4"
 
 Write-Host ""
 Write-Host "=== Copying Special Mention Images ===" -ForegroundColor Cyan
